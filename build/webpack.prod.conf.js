@@ -3,10 +3,10 @@ var webpack = require('webpack');
 var merge = require('webpack-merge');
 var baseConfig = require('./webpack.base.conf');
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var TerserPlugin = require('terser-webpack-plugin');
 var HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
 var OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 var dist = path.join(__dirname, '..', 'dist');
@@ -27,11 +27,12 @@ var config = merge(baseConfig, {
   },
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
+      new TerserPlugin({
         cache: true,
         parallel: true,
         sourceMap: false,
-        uglifyOptions: {
+        terserOptions: {
+          ecma: 5,
           compress: {
             unused: false
           }
@@ -55,18 +56,8 @@ var config = merge(baseConfig, {
       verbose: true,
       dry: false
     }),
-    new CopyWebpackPlugin([{ from: './config/*.js', to: './vendor' }]),
     new HtmlWebpackExternalsPlugin({
       externals: [
-        {
-          module: 'config',
-          entry: {
-            path: 'config.js',
-            cwpPatternConfig: {
-              context: path.resolve(__dirname, '../')
-            }
-          }
-        },
         {
           module: 'vue',
           entry: 'https://cdn.bootcss.com/vue/2.5.13/vue.runtime.min.js'
@@ -85,15 +76,6 @@ var config = merge(baseConfig, {
     new HtmlWebpackExternalsPlugin({
       externals: [
         {
-          module: 'config',
-          entry: {
-            path: 'config.js',
-            cwpPatternConfig: {
-              context: path.resolve(__dirname, '../')
-            }
-          }
-        },
-        {
           module: 'vue',
           entry: 'https://cdn.bootcss.com/vue/2.5.13/vue.runtime.min.js'
         },
@@ -106,15 +88,6 @@ var config = merge(baseConfig, {
     }),
     new HtmlWebpackExternalsPlugin({
       externals: [
-        {
-          module: 'config',
-          entry: {
-            path: 'config.js',
-            cwpPatternConfig: {
-              context: path.resolve(__dirname, '../')
-            }
-          }
-        },
         {
           module: 'vue',
           entry: 'https://cdn.bootcss.com/vue/2.5.13/vue.runtime.min.js'

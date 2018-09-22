@@ -8,7 +8,6 @@ import router from './modules/route';
 import store from './store';
 // element UI
 import ElementUI from 'element-ui';
-import AuthPlugin from '../common/js/auth-plugin';
 import EventPlugin from '../common/js/event-plugin';
 import '../common/css/theme-chalk/src/index.scss';
 // axios
@@ -21,7 +20,6 @@ Vue.config.productionTip = false;
 
 Vue.use(ElementUI);
 Vue.use(EventPlugin, window.parent);
-Vue.use(AuthPlugin);
 
 const app = new Vue({
   el: '#app',
