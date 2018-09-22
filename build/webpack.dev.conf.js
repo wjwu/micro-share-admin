@@ -27,20 +27,6 @@ var config = merge(baseConfig, {
     new HtmlWebpackExternalsPlugin({
       externals: [
         {
-          module: 'config',
-          entry: {
-            path: 'config.dev.js',
-            cwpPatternConfig: {
-              context: path.resolve(__dirname, '../')
-            }
-          }
-        }
-      ],
-      files: ['login.html', 'app.html', 'index.html']
-    }),
-    new HtmlWebpackExternalsPlugin({
-      externals: [
-        {
           module: 'ckeditor',
           entry: {
             path: 'ckeditor.js',

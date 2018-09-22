@@ -3,11 +3,9 @@ var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var VueLoaderPlugin = require('vue-loader/lib/plugin');
+var HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 
 var src = path.join(__dirname, '..', 'src');
-var resolve = function(dir) {
-  return path.join(__dirname, '..', dir);
-};
 
 module.exports = {
   entry: {
@@ -29,7 +27,7 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        include: [src, resolve('node_modules/element-ui/packages')]
+        include: [src]
       },
       {
         test: /\.js$/,
@@ -80,6 +78,10 @@ module.exports = {
       }
     ]
   },
+  externals: {
+    vue: 'Vue',
+    'element-ui': 'ELEMENT'
+  },
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
@@ -100,8 +102,27 @@ module.exports = {
       inject: 'body',
       chunks: ['nav']
     }),
+    new HtmlWebpackExternalsPlugin({
+      externals: [
+        {
+          module: 'vue',
+          entry: 'https://cdn.bootcss.com/vue/2.5.13/vue.runtime.min.js'
+        },
+        {
+          module: 'element-ui',
+          entry: {
+            path: 'index.js',
+            cwpPatternConfig: {
+              context: path.resolve(__dirname, '../src/common/lib')
+            }
+          }
+        }
+      ],
+      files: ['login.html', 'app.html', 'index.html']
+    }),
     new CopyWebpackPlugin([
-      { from: './src/common/lib/ckeditor', to: './vendor/ckeditor' }
+      { from: './src/common/lib/ckeditor', to: './vendor/ckeditor' },
+      { from: './src/common/lib/element-ui', to: './vendor/element-ui' }
     ])
   ],
   resolve: {

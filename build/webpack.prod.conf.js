@@ -3,8 +3,7 @@ var webpack = require('webpack');
 var merge = require('webpack-merge');
 var baseConfig = require('./webpack.base.conf');
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-var TerserPlugin = require('terser-webpack-plugin');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -18,20 +17,18 @@ var config = merge(baseConfig, {
     publicPath: './'
   },
   externals: {
-    vue: 'Vue',
     axios: 'axios',
     vuex: 'Vuex',
     'vue-router': 'VueRouter',
-    'element-ui': 'ELEMENT',
     lodash: '_'
   },
   optimization: {
     minimizer: [
-      new TerserPlugin({
+      new UglifyJsPlugin({
         cache: true,
         parallel: true,
         sourceMap: false,
-        terserOptions: {
+        uglifyOptions: {
           ecma: 5,
           compress: {
             unused: false
@@ -59,14 +56,6 @@ var config = merge(baseConfig, {
     new HtmlWebpackExternalsPlugin({
       externals: [
         {
-          module: 'vue',
-          entry: 'https://cdn.bootcss.com/vue/2.5.13/vue.runtime.min.js'
-        },
-        {
-          module: 'element-ui',
-          entry: 'https://cdn.bootcss.com/element-ui/2.0.11/index.js'
-        },
-        {
           module: 'axios',
           entry: 'https://cdn.bootcss.com/axios/0.17.1/axios.min.js'
         }
@@ -75,27 +64,6 @@ var config = merge(baseConfig, {
     }),
     new HtmlWebpackExternalsPlugin({
       externals: [
-        {
-          module: 'vue',
-          entry: 'https://cdn.bootcss.com/vue/2.5.13/vue.runtime.min.js'
-        },
-        {
-          module: 'element-ui',
-          entry: 'https://cdn.bootcss.com/element-ui/2.0.11/index.js'
-        }
-      ],
-      files: ['app.html']
-    }),
-    new HtmlWebpackExternalsPlugin({
-      externals: [
-        {
-          module: 'vue',
-          entry: 'https://cdn.bootcss.com/vue/2.5.13/vue.runtime.min.js'
-        },
-        {
-          module: 'element-ui',
-          entry: 'https://cdn.bootcss.com/element-ui/2.0.11/index.js'
-        },
         {
           module: 'vue-router',
           entry: 'https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js'
