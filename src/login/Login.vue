@@ -67,7 +67,7 @@ export default {
           if (response) {
             session.setString('token', response.data.token);
             session.setObject('operator', response.data.operatorInfo);
-            window.location.href = './app.html';
+            window.location.href = './#/home';
           }
         } catch (e) {
           this.loading = false;

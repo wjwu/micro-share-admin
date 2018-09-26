@@ -29,7 +29,6 @@ var config = merge(baseConfig, {
         parallel: true,
         sourceMap: false,
         uglifyOptions: {
-          ecma: 5,
           compress: {
             unused: false
           }
@@ -56,6 +55,14 @@ var config = merge(baseConfig, {
     new HtmlWebpackExternalsPlugin({
       externals: [
         {
+          module: 'vue',
+          entry: 'https://cdn.bootcss.com/vue/2.5.13/vue.runtime.min.js'
+        },
+        {
+          module: 'element-ui',
+          entry: 'https://cdn.bootcss.com/element-ui/2.0.11/index.js'
+        },
+        {
           module: 'axios',
           entry: 'https://cdn.bootcss.com/axios/0.17.1/axios.min.js'
         }
@@ -64,6 +71,14 @@ var config = merge(baseConfig, {
     }),
     new HtmlWebpackExternalsPlugin({
       externals: [
+        {
+          module: 'vue',
+          entry: 'https://cdn.bootcss.com/vue/2.5.13/vue.runtime.min.js'
+        },
+        {
+          module: 'element-ui',
+          entry: 'https://cdn.bootcss.com/element-ui/2.0.11/index.js'
+        },
         {
           module: 'vue-router',
           entry: 'https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js'

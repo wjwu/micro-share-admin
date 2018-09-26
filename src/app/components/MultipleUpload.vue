@@ -99,3 +99,20 @@ export default {
 };
 </script>
 
+<style lang="scss">
+.multiple-upload {
+  .item {
+    display: inline-flex !important;
+    flex-direction: column;
+    margin-right: 15px;
+  }
+  .single-upload {
+    display: inline-block !important;
+  }
+  .remove {
+    text-align: center;
+  }
+}
+</style>
+
+

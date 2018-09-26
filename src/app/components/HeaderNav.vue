@@ -58,10 +58,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   flex-shrink: 0;
-  margin-left: 240px;
   height: 66px;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.17);
-  z-index: 1;
 }
 
 .user {

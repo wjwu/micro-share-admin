@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import session from '../../common/js/session';
 import home from './home/route';
-import ad from './ad/route';
+import test from './test/route';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -16,7 +16,7 @@ const router = new VueRouter({
       redirect: '/home'
     },
     home,
-    ad
+    test
   ]
 });
 

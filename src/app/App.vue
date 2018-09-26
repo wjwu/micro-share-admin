@@ -1,15 +1,30 @@
 <template>
-  <div class="app-wrapper">
+  <div v-if="isShowApp">
+    <aside-bar/>
     <div class="content-wrapper">
-      <router-view></router-view>
-      <div v-show="false">{{`${notifySuccess}${notifyWarning}${notifyInfo}${notifyError}`}}</div>
+      <header-nav/>
+      <div class="content">
+        <router-view></router-view>
+      </div>
     </div>
+    <div v-show="false">{{`${notifySuccess}${notifyWarning}${notifyInfo}${notifyError}`}}</div>
   </div>
 </template>
 
 <script>
+import AsideBar from './components/AsideBar';
+import HeaderNav from './components/HeaderNav';
+
 export default {
-  name: 'App',
+  components: {
+    AsideBar,
+    HeaderNav
+  },
+  data() {
+    return {
+      isShowApp: true
+    };
+  },
   computed: {
     notifySuccess() {
       const notify = this.$store.state.global.notifySuccess;
@@ -56,22 +71,22 @@ export default {
 </script>
 
 <style lang="scss">
-html,
-body {
+html {
   height: 100%;
-  background-color: #fff;
+}
+body {
+  position: relative;
+  min-height: 100%;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
     Microsoft YaHei, SimSun, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
-.app-wrapper {
-  height: auto;
-  background-color: #fff;
 
-  .content-wrapper {
-    padding: 30px;
-    background: #fff;
-  }
+.content-wrapper {
+  margin-left: 240px;
+}
+.content {
+  padding: 30px;
 }
 </style>
 

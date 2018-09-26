@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 style="padding:20px;">欢迎使用本系统！</h1>
+    <h1>欢迎使用本系统！</h1>
   </div>
 </template>
 
