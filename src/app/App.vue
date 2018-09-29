@@ -86,7 +86,7 @@ body {
   margin-left: 240px;
 }
 .content {
-  padding: 30px;
+  padding: 20px;
 }
 </style>
 

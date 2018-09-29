@@ -21,7 +21,8 @@ var config = merge(baseConfig, {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"development"'
+        NODE_ENV: '"development"',
+        API_HOST: '"http://web.j-coder.com"'
       }
     }),
     new HtmlWebpackExternalsPlugin({

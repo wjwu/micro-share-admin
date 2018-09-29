@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import session from '../../common/js/session';
+// import session from '../../common/js/session';
 import home from './home/route';
 import test from './test/route';
+import user from './user/route';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -16,17 +17,18 @@ const router = new VueRouter({
       redirect: '/home'
     },
     home,
-    test
+    test,
+    user
   ]
 });
 
 router.beforeEach((to, from, next) => {
-  if (!session.getString('token')) {
-    next(false);
-    window.parent.location.href = './login.html';
-  } else {
-    next();
-  }
+  // if (!session.getString('token')) {
+  //   next(false);
+  //   window.parent.location.href = './login.html';
+  // } else {
+  next();
+  // }
 });
 
 export default router;

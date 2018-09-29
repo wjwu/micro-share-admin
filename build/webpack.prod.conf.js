@@ -44,7 +44,8 @@ var config = merge(baseConfig, {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
+        NODE_ENV: '"production"',
+        API_HOST: '"http://web.j-coder.com"'
       }
     }),
     new CleanWebpackPlugin('./dist', {

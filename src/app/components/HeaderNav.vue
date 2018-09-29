@@ -27,15 +27,16 @@
 <script>
 import session from '../../common/js/session';
 
-const operator = session.getObject('operator');
-if (!operator) {
-  window.location.href = './login.html';
-}
+// const operator = session.getObject('operator');
+// if (!operator) {
+//   window.location.href = './login.html';
+// }
 
 export default {
   data() {
     return {
-      username: operator.name,
+      // username: operator.name,
+      username: '',
       dialogVisible: false
     };
   },
@@ -59,6 +60,7 @@ export default {
   justify-content: flex-end;
   flex-shrink: 0;
   height: 66px;
+  background-color: #f3f7ff;
 }
 
 .user {

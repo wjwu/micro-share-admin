@@ -1,14 +1,14 @@
 <template>
   <div class="asider">
     <div class="logo">
-      中清云联后台管理系统
+      商伴部落后台管理系统
     </div>
     <el-menu :default-active="defaultActive" class="main-menu" router>
       <el-menu-item :index="HOME">
         首页
       </el-menu-item>
-      <el-menu-item :index="TEST">
-        测试页面
+      <el-menu-item :index="USER">
+        用户
       </el-menu-item>
       <el-submenu index="2">
         <template slot="title">我的工作台</template>
@@ -22,7 +22,7 @@
 
 <script>
 const HOME = '/home';
-const TEST = '/test';
+const USER = '/user/list';
 
 export default {
   computed: {
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       HOME,
-      TEST
+      USER
     };
   }
 };

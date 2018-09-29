@@ -6,7 +6,8 @@ import App from './App.vue';
 import router from './modules/route';
 import store from './store';
 import ElementUI from 'element-ui';
-import '../common/css/theme-chalk/src/index.scss';
+// import '../common/css/theme-chalk/src/index.scss';
+import 'element-ui/lib/theme-chalk/index.css';
 import './utils/axios';
 import './filters';
 
