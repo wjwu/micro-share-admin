@@ -2,7 +2,7 @@ import Index from './index';
 import List from './List';
 
 export default {
-  path: '/user',
+  path: '/group',
   redirect: '/404',
   component: Index,
   children: [
