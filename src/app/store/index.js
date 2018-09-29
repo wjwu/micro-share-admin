@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 import global from './modules/global';
 import user from './modules/user';
 import group from './modules/group';
+import order from './modules/order';
+import complaint from './modules/complaint';
 
 Vue.use(Vuex);
 
@@ -10,6 +12,8 @@ export default new Vuex.Store({
   modules: {
     global,
     user,
-    group
+    group,
+    order,
+    complaint
   }
 });

@@ -7,18 +7,24 @@
       <el-menu-item :index="HOME">
         首页
       </el-menu-item>
+      <el-menu-item :index="ORDER">
+        订单
+      </el-menu-item>
+      <el-menu-item :index="COMPLAINT">
+        投诉
+      </el-menu-item>
       <el-menu-item :index="USER">
         用户
       </el-menu-item>
       <el-menu-item :index="GROUP">
         群组
       </el-menu-item>
-      <el-submenu index="2">
+      <!-- <el-submenu index="2">
         <template slot="title">我的工作台</template>
         <el-menu-item index="2-1">选项1</el-menu-item>
         <el-menu-item index="2-2">选项2</el-menu-item>
         <el-menu-item index="2-3">选项3</el-menu-item>
-      </el-submenu>
+      </el-submenu> -->
     </el-menu>
   </div>
 </template>
@@ -27,6 +33,8 @@
 const HOME = '/home';
 const USER = '/user/list';
 const GROUP = '/group/list';
+const ORDER = '/order/list';
+const COMPLAINT = '/complaint/list';
 
 export default {
   computed: {
@@ -38,7 +46,9 @@ export default {
     return {
       HOME,
       USER,
-      GROUP
+      GROUP,
+      ORDER,
+      COMPLAINT
     };
   }
 };
@@ -52,18 +62,21 @@ export default {
   right: 0;
   bottom: 0;
   width: 240px;
-  background-color: #f3f7ff;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
 }
 .logo {
-  height: 66px;
-  line-height: 66px;
-  background-position: 20px 50%;
-  font-size: 13px;
-  color: #585858;
+  height: 60px;
+  line-height: 60px;
+  font-size: 14px;
+  color: #fff;
   text-align: center;
   padding-right: 20px;
+  background-color: #409EFF;
 }
 .main-menu {
   overflow: auto;
+  flex: 1;
 }
 </style>

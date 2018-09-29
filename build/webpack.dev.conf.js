@@ -25,20 +25,20 @@ var config = merge(baseConfig, {
         API_HOST: '"http://web.j-coder.com"'
       }
     }),
-    new HtmlWebpackExternalsPlugin({
-      externals: [
-        {
-          module: 'ckeditor',
-          entry: {
-            path: 'ckeditor.js',
-            cwpPatternConfig: {
-              context: path.resolve(__dirname, '../src/common/lib')
-            }
-          }
-        }
-      ],
-      files: ['index.html']
-    })
+    // new HtmlWebpackExternalsPlugin({
+    //   externals: [
+    //     {
+    //       module: 'ckeditor',
+    //       entry: {
+    //         path: 'ckeditor.js',
+    //         cwpPatternConfig: {
+    //           context: path.resolve(__dirname, '../src/common/lib')
+    //         }
+    //       }
+    //     }
+    //   ],
+    //   files: ['index.html']
+    // })
   ]
 });
 

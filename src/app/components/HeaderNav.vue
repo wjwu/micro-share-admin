@@ -59,8 +59,8 @@ export default {
   display: flex;
   justify-content: flex-end;
   flex-shrink: 0;
-  height: 66px;
-  background-color: #f3f7ff;
+  height: 60px;
+  background-color: #409EFF;
 }
 
 .user {

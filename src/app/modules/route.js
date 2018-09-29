@@ -4,6 +4,9 @@ import VueRouter from 'vue-router';
 import home from './home/route';
 import user from './user/route';
 import group from './group/route';
+import order from './order/route';
+import complaint from './complaint/route';
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -18,7 +21,9 @@ const router = new VueRouter({
     },
     home,
     user,
-    group
+    group,
+    order,
+    complaint
   ]
 });
 

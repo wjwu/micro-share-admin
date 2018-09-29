@@ -96,15 +96,15 @@ var config = merge(baseConfig, {
           module: 'lodash',
           entry: 'https://cdn.bootcss.com/lodash.js/4.17.9/lodash.min.js'
         },
-        {
-          module: 'ckeditor',
-          entry: {
-            path: 'ckeditor.js',
-            cwpPatternConfig: {
-              context: path.resolve(__dirname, '../src/common/lib')
-            }
-          }
-        }
+        // {
+        //   module: 'ckeditor',
+        //   entry: {
+        //     path: 'ckeditor.js',
+        //     cwpPatternConfig: {
+        //       context: path.resolve(__dirname, '../src/common/lib')
+        //     }
+        //   }
+        // }
       ],
       files: ['index.html']
     })

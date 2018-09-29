@@ -39,6 +39,9 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader'
           }
         ]
       },
@@ -53,6 +56,9 @@ module.exports = {
           },
           {
             loader: 'sass-loader'
+          },
+          {
+            loader: 'postcss-loader'
           }
         ]
       },
@@ -89,10 +95,10 @@ module.exports = {
       template: './src/app/index.html',
       inject: 'body',
       chunks: ['app']
-    }),
-    new CopyWebpackPlugin([
-      { from: './src/common/lib/ckeditor', to: './vendor/ckeditor' }
-    ])
+    })
+    // new CopyWebpackPlugin([
+    //   { from: './src/common/lib/ckeditor', to: './vendor/ckeditor' }
+    // ])
   ],
   resolve: {
     extensions: ['.js', '.vue']

@@ -1,10 +1,12 @@
 <template>
-  <div v-if="isShowApp">
+  <div class="app" v-if="isShowApp">
     <aside-bar/>
-    <div class="content-wrapper">
+    <div class="main">
       <header-nav/>
-      <div class="content">
-        <router-view></router-view>
+      <div class="cnt">
+        <div class="cnt-wrapper">
+          <router-view></router-view>
+        </div>
       </div>
     </div>
     <div v-show="false">{{`${notifySuccess}${notifyWarning}${notifyInfo}${notifyError}`}}</div>
@@ -77,16 +79,32 @@ html {
 body {
   position: relative;
   min-height: 100%;
+  display: flex;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
     Microsoft YaHei, SimSun, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-.content-wrapper {
+.app {
+  display: flex;
+  flex: 1;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   margin-left: 240px;
 }
-.content {
+.cnt {
+  flex: 1;
   padding: 20px;
+  background-color: #f5f7fa;
+
+  .cnt-wrapper {
+    padding: 20px;
+    background-color: #fff;
+  }
 }
 </style>
 
