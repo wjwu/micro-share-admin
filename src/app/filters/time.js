@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import format from 'date-fns/format';
 
-Vue.filter('timeFormatter', val => {
+Vue.filter('time', val => {
   if (!Number(val)) {
     return '';
   }
@@ -13,6 +13,6 @@ Vue.filter('timeFormatter', val => {
   return result;
 });
 
-Vue.filter('timeShortFormatter', val => {
+Vue.filter('timeShort', val => {
   return format(val, 'YYYY-MM-DD');
 });

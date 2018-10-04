@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form inline label-width="80px" :model="searchForm">
-      <el-form-item label="名称：">
+      <el-form-item label="用户名：">
         <el-input size="medium" v-model="searchForm.name"></el-input>
       </el-form-item>
       <!-- <el-form-item label="微信号：">
@@ -11,19 +11,12 @@
         <el-button type="primary" size="medium" @click="handleSearch">搜索</el-button>
       </el-form-item>
     </el-form>
-    <el-table :data="orders" border style="width:100%" header-row-class-name="table-header" v-loading="loading">
-      <el-table-column label="名称" prop="groupName">
+    <el-table :data="feedbacks" border style="width:100%" header-row-class-name="table-header" v-loading="loading">
+      <el-table-column label="用户名" width="120" prop="username">
       </el-table-column>
-      <el-table-column label="微信号" width="220" prop="wechat">
+      <el-table-column label="内容" prop="content" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column label="人数" width="100" prop="groupMemberCount">
-      </el-table-column>
-      <el-table-column label="行业" width="100" prop="industry">
-      </el-table-column>
-      <el-table-column label="状态" width="120">
-        <template slot-scope="scope">
-          {{scope.row.status | orderStatus}}
-        </template>
+      <el-table-column label="类型" width="160" prop="type">
       </el-table-column>
       <el-table-column label="操作" width="120">
         <template slot-scope="scope">
@@ -33,24 +26,22 @@
     </el-table>
     <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="pageIndex" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
     </el-pagination>
-    <order-dialog :visible.sync="orderDialogVisible" :order="order" v-loading="detailLoading"></order-dialog>
+    <!-- <user-dialog :visible.sync="complaintDialogVisible" :complaint="complaint"></user-dialog> -->
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import OrderDialog from './components/OrderDialog';
+// import UserDialog from './components/UserDialog';
 
 export default {
-  components: {
-    OrderDialog
-  },
-  computed: mapState('order', {
-    orders: state => state.getOrders.data,
-    loading: state => state.getOrders.loading,
-    total: state => state.getOrders.total,
-    order: state => state.getOrder.data,
-    detailLoading: state => state.getOrder.loading
+  // components: {
+  //   UserDialog
+  // },
+  computed: mapState('feedback', {
+    feedbacks: state => state.getFeedbacks.data,
+    loading: state => state.getFeedbacks.loading,
+    total: state => state.getFeedbacks.total
   }),
   data() {
     return {
@@ -60,21 +51,21 @@ export default {
         name: '',
         wechatId: ''
       },
-      orderDialogVisible: false
+      complaintDialogVisible: false
     };
   },
   mounted() {
     this.load();
   },
   methods: {
-    ...mapActions('order', ['getOrders', 'getOrder']),
+    ...mapActions('feedback', ['getFeedbacks']),
     load() {
       let request = {
         pageSize: this.pageSize,
         pageIndex: this.pageIndex,
         ...this.searchForm
       };
-      this.getOrders(request);
+      this.getFeedbacks(request);
     },
     handleCurrentChange(pageIndex) {
       this.pageIndex = pageIndex;
@@ -89,8 +80,8 @@ export default {
       this.load();
     },
     handleView(id) {
-      this.getOrder(id);
-      this.orderDialogVisible = true;
+      this.getComplaint(id);
+      this.complaintDialogVisible = true;
     }
   }
 };

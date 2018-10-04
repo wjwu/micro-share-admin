@@ -1,8 +1,8 @@
 <template>
   <div class="app" v-if="isShowApp">
-    <aside-bar/>
+    <aside-bar />
     <div class="main">
-      <header-nav/>
+      <header-nav />
       <div class="cnt">
         <div class="cnt-wrapper">
           <router-view></router-view>
@@ -86,15 +86,18 @@ body {
 }
 
 .app {
-  display: flex;
+  position: relative;
   flex: 1;
 }
 
 .main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 240px;
   display: flex;
   flex-direction: column;
-  flex: 1;
-  margin-left: 240px;
 }
 .cnt {
   flex: 1;

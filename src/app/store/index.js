@@ -5,6 +5,7 @@ import user from './modules/user';
 import group from './modules/group';
 import order from './modules/order';
 import complaint from './modules/complaint';
+import feedback from './modules/feedback';
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     user,
     group,
     order,
-    complaint
+    complaint,
+    feedback
   }
 });

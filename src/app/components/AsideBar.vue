@@ -19,6 +19,9 @@
       <el-menu-item :index="GROUP">
         群组
       </el-menu-item>
+      <el-menu-item :index="FEEDBACK">
+        反馈
+      </el-menu-item>
       <!-- <el-submenu index="2">
         <template slot="title">我的工作台</template>
         <el-menu-item index="2-1">选项1</el-menu-item>
@@ -35,6 +38,7 @@ const USER = '/user/list';
 const GROUP = '/group/list';
 const ORDER = '/order/list';
 const COMPLAINT = '/complaint/list';
+const FEEDBACK = '/feedback/list';
 
 export default {
   computed: {
@@ -48,7 +52,8 @@ export default {
       USER,
       GROUP,
       ORDER,
-      COMPLAINT
+      COMPLAINT,
+      FEEDBACK
     };
   }
 };
@@ -73,7 +78,7 @@ export default {
   color: #fff;
   text-align: center;
   padding-right: 20px;
-  background-color: #409EFF;
+  background-color: #409eff;
 }
 .main-menu {
   overflow: auto;
