@@ -5,22 +5,28 @@
     </div>
     <el-menu :default-active="defaultActive" class="main-menu" router>
       <el-menu-item :index="HOME">
-        首页
+        <i class="fa fa-home"></i>
+        <span>首页</span>
       </el-menu-item>
       <el-menu-item :index="ORDER">
-        订单
+        <i class="fa fa-file-text"></i>
+        <span>订单</span>
       </el-menu-item>
       <el-menu-item :index="COMPLAINT">
-        投诉
+        <i class="fa fa-comments"></i>
+        <span>投诉</span>
       </el-menu-item>
       <el-menu-item :index="USER">
-        用户
+        <i class="fa fa-user"></i>
+        <span>用户</span>
       </el-menu-item>
       <el-menu-item :index="GROUP">
-        群组
+        <i class="fa fa-users"></i>
+        <span>群组</span>
       </el-menu-item>
       <el-menu-item :index="FEEDBACK">
-        反馈
+        <i class="fa fa-feed"></i>
+        <span>反馈</span>
       </el-menu-item>
       <!-- <el-submenu index="2">
         <template slot="title">我的工作台</template>
@@ -83,5 +89,8 @@ export default {
 .main-menu {
   overflow: auto;
   flex: 1;
+}
+.fa{
+  min-width: 18px;
 }
 </style>
