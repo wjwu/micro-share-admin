@@ -14,8 +14,8 @@ export default {
       state.getComplaints.loading = true;
     },
     successGetComplaints(state, data) {
-      state.getComplaints.data = data;
-      state.getComplaints.total = data.totalCount;
+      state.getComplaints.data = data.content;
+      state.getComplaints.total = data.totalElements;
       state.getComplaints.loading = false;
     },
     failureGetComplaints(state) {
@@ -28,7 +28,7 @@ export default {
         commit,
         async () => {
           commit('requestGetComplaints');
-          let { data } = await axios.get('/admin/complaint', {
+          let { data } = await axios.get('/admin/complaint/', {
             params: {
               ...params
             }

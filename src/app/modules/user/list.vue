@@ -26,7 +26,10 @@
       </el-table-column>
       <el-table-column label="微信号" prop="wechat">
       </el-table-column>
-      <el-table-column label="性别" width="80" prop="sex">
+      <el-table-column label="性别" width="80">
+        <template slot-scope="scope">
+          {{scope.row.sex | sex}}
+        </template>
       </el-table-column>
       <el-table-column label="信用分" width="80" prop="creditScore">
       </el-table-column>
@@ -36,7 +39,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="pageIndex" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
+    <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="currentPage" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
     </el-pagination>
     <user-dialog :visible.sync="userDialogVisible" :user="user" v-loading="detailLoading"></user-dialog>
   </div>
@@ -60,7 +63,7 @@ export default {
   data() {
     return {
       pageSize: 10,
-      pageIndex: 1,
+      currentPage: 1,
       searchForm: {
         userName: '',
         wechat: '',
@@ -77,13 +80,13 @@ export default {
     load() {
       let request = {
         pageSize: this.pageSize,
-        pageIndex: this.pageIndex,
+        currentPage: this.currentPage,
         ...this.searchForm
       };
       this.getUsers(request);
     },
-    handleCurrentChange(pageIndex) {
-      this.pageIndex = pageIndex;
+    handleCurrentChange(currentPage) {
+      this.currentPage = currentPage;
       this.load();
     },
     handleSizeChange(pageSize) {
@@ -91,7 +94,7 @@ export default {
       this.load();
     },
     handleSearch() {
-      this.pageIndex = 1;
+      this.currentPage = 1;
       this.load();
     },
     handleView(id) {

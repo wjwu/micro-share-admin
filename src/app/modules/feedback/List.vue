@@ -24,7 +24,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="pageIndex" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
+    <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="currentPage" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
     </el-pagination>
     <!-- <user-dialog :visible.sync="complaintDialogVisible" :complaint="complaint"></user-dialog> -->
   </div>
@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       pageSize: 10,
-      pageIndex: 1,
+      currentPage: 1,
       searchForm: {
         name: '',
         wechatId: ''
@@ -62,13 +62,13 @@ export default {
     load() {
       let request = {
         pageSize: this.pageSize,
-        pageIndex: this.pageIndex,
+        currentPage: this.currentPage,
         ...this.searchForm
       };
       this.getFeedbacks(request);
     },
-    handleCurrentChange(pageIndex) {
-      this.pageIndex = pageIndex;
+    handleCurrentChange(currentPage) {
+      this.currentPage = currentPage;
       this.load();
     },
     handleSizeChange(pageSize) {
@@ -76,7 +76,7 @@ export default {
       this.load();
     },
     handleSearch() {
-      this.pageIndex = 1;
+      this.currentPage = 1;
       this.load();
     },
     handleView(id) {

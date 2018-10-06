@@ -14,8 +14,8 @@ export default {
       state.getUsers.loading = true;
     },
     successGetUsers(state, data) {
-      state.getUsers.data = data;
-      state.getUsers.total = data.totalCount;
+      state.getUsers.data = data.content;
+      state.getUsers.total = data.totalElements;
       state.getUsers.loading = false;
     },
     failureGetUsers(state) {

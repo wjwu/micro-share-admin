@@ -12,13 +12,21 @@
       </el-form-item>
     </el-form>
     <el-table :data="complaints" border style="width:100%" header-row-class-name="table-header" v-loading="loading">
-      <el-table-column label="名称" width="120" prop="name">
+      <el-table-column label="投诉人" width="120" prop="fromName">
       </el-table-column>
-      <el-table-column label="微信号" prop="wechatId">
+      <el-table-column label="被投诉人" width="120" prop="toName">
       </el-table-column>
-      <el-table-column label="人数" width="80" prop="count">
+      <el-table-column label="投诉内容" prop="content" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column label="行业" width="80" prop="industry">
+      <el-table-column label="类型" width="140">
+        <template slot-scope="scope">
+          {{scope.row.type | compType}}
+        </template>
+      </el-table-column>
+      <el-table-column label="状态" width="140">
+        <template slot-scope="scope">
+          {{scope.row.status | compStatus}}
+        </template>
       </el-table-column>
       <el-table-column label="操作" width="120">
         <template slot-scope="scope">
@@ -26,7 +34,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="pageIndex" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
+    <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="currentPage" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
     </el-pagination>
     <user-dialog :visible.sync="complaintDialogVisible" :complaint="complaint" v-loading="detailLoading"></user-dialog>
   </div>
@@ -50,7 +58,7 @@ export default {
   data() {
     return {
       pageSize: 10,
-      pageIndex: 1,
+      currentPage: 1,
       searchForm: {
         name: '',
         wechatId: ''
@@ -66,13 +74,13 @@ export default {
     load() {
       let request = {
         pageSize: this.pageSize,
-        pageIndex: this.pageIndex,
+        currentPage: this.currentPage,
         ...this.searchForm
       };
       this.getComplaints(request);
     },
-    handleCurrentChange(pageIndex) {
-      this.pageIndex = pageIndex;
+    handleCurrentChange(currentPage) {
+      this.currentPage = currentPage;
       this.load();
     },
     handleSizeChange(pageSize) {
@@ -80,7 +88,7 @@ export default {
       this.load();
     },
     handleSearch() {
-      this.pageIndex = 1;
+      this.currentPage = 1;
       this.load();
     },
     handleView(id) {

@@ -14,8 +14,8 @@ export default {
       state.getGroups.loading = true;
     },
     successGetGroups(state, data) {
-      state.getGroups.data = data;
-      state.getGroups.total = data.totalCount;
+      state.getGroups.data = data.content;
+      state.getGroups.total = data.totalElements;
       state.getGroups.loading = false;
     },
     failureGetGroups(state) {
@@ -28,7 +28,7 @@ export default {
         commit,
         async () => {
           commit('requestGetGroups');
-          let { data } = await axios.get('/admin/group', {
+          let { data } = await axios.get('/admin/group/', {
             params: {
               ...params
             }
