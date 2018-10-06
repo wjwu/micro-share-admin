@@ -1,5 +1,6 @@
 import Index from './index';
-import List from './List';
+import All from './All';
+import Pending from './Pending';
 
 export default {
   path: '/complaint',
@@ -7,8 +8,12 @@ export default {
   component: Index,
   children: [
     {
-      path: 'list',
-      component: List
+      path: 'all',
+      component: All
+    },
+    {
+      path: 'pending',
+      component: Pending
     }
   ]
 };

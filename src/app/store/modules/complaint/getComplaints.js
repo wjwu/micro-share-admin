@@ -28,7 +28,11 @@ export default {
         commit,
         async () => {
           commit('requestGetComplaints');
-          let { data } = await axios.get('/admin/complaint/', {
+          let url = '/admin/complaint/';
+          if (params.disavow) {
+            url = '/admin/complaint/disavow';
+          }
+          let { data } = await axios.get(url, {
             params: {
               ...params
             }

@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import config from '../common/js/config';
 import session from '../common/js/session';
 import axios from 'axios';
 
@@ -59,16 +60,15 @@ export default {
       this.$refs.loginForm.validate().then(async () => {
         this.loading = true;
         try {
-          let response = await axios.post(`${window.config.apiHost}/login`, {
-            userName: this.loginForm.userName.trim(),
-            passWord: this.loginForm.password.trim()
+          await axios.get(`${config.apiHost}/login`, {
+            params: {
+              userName: this.loginForm.userName.trim(),
+              passWord: this.loginForm.password.trim()
+            }
           });
           this.loading = false;
-          if (response) {
-            session.setString('token', response.data.token);
-            session.setObject('operator', response.data.operatorInfo);
-            window.location.href = './#/home';
-          }
+          session.setObject('operator', this.loginForm.userName.trim());
+          window.location.href = './#/home';
         } catch (e) {
           this.loading = false;
           if (e.response) {

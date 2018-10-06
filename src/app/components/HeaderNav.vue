@@ -8,7 +8,7 @@
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="setup">设置</el-dropdown-item>
+          <!-- <el-dropdown-item command="setup">设置</el-dropdown-item> -->
           <el-dropdown-item command="exit">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -27,16 +27,15 @@
 <script>
 import session from '../../common/js/session';
 
-// const operator = session.getObject('operator');
-// if (!operator) {
-//   window.location.href = './login.html';
-// }
+const operator = session.getObject('operator');
+if (!operator) {
+  window.location.href = './login.html';
+}
 
 export default {
   data() {
     return {
-      // username: operator.name,
-      username: '',
+      username: operator,
       dialogVisible: false
     };
   },
@@ -54,22 +53,26 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
 .header {
   display: flex;
   justify-content: flex-end;
   flex-shrink: 0;
   height: 60px;
-  background-color: #409EFF;
+  background-color: #409eff;
 }
 
 .user {
   height: 100%;
-  padding: 5px 10px;
+  /* padding: 5px 10px; */
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-right: 100px;
+  margin-right: 20px;
   cursor: pointer;
+
+  .el-dropdown {
+    color: #fff;
+  }
 }
 </style>

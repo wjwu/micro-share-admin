@@ -12,10 +12,18 @@
         <i class="fa fa-file-text"></i>
         <span>订单</span>
       </el-menu-item>
-      <el-menu-item :index="COMPLAINT">
+      <el-submenu :index="COMPLAINT">
+        <template slot="title">
+          <i class="fa fa-comments"></i>
+          <span>投诉</span>
+        </template>
+        <el-menu-item :index="COMPLAINT_ALL">全部投诉</el-menu-item>
+        <el-menu-item :index="COMPLAINT_PENDING">待处理的投诉</el-menu-item>
+      </el-submenu>
+      <!-- <el-menu-item :index="COMPLAINT">
         <i class="fa fa-comments"></i>
         <span>投诉</span>
-      </el-menu-item>
+      </el-menu-item> -->
       <el-menu-item :index="USER">
         <i class="fa fa-user"></i>
         <span>用户</span>
@@ -28,12 +36,6 @@
         <i class="fa fa-feed"></i>
         <span>反馈</span>
       </el-menu-item>
-      <!-- <el-submenu index="2">
-        <template slot="title">我的工作台</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-      </el-submenu> -->
     </el-menu>
   </div>
 </template>
@@ -43,7 +45,9 @@ const HOME = '/home';
 const USER = '/user/list';
 const GROUP = '/group/list';
 const ORDER = '/order/list';
-const COMPLAINT = '/complaint/list';
+const COMPLAINT = '/complaint';
+const COMPLAINT_ALL = '/complaint/all';
+const COMPLAINT_PENDING = '/complaint/pending';
 const FEEDBACK = '/feedback/list';
 
 export default {
@@ -59,6 +63,8 @@ export default {
       GROUP,
       ORDER,
       COMPLAINT,
+      COMPLAINT_ALL,
+      COMPLAINT_PENDING,
       FEEDBACK
     };
   }
@@ -90,7 +96,7 @@ export default {
   overflow: auto;
   flex: 1;
 }
-.fa{
+.fa {
   min-width: 18px;
 }
 </style>
