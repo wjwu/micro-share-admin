@@ -18,20 +18,20 @@
           <span>投诉</span>
         </template>
         <el-menu-item :index="COMPLAINT_ALL">全部投诉</el-menu-item>
-        <el-menu-item :index="COMPLAINT_PENDING">待处理的投诉</el-menu-item>
+        <el-menu-item :index="COMPLAINT_PENDING">待处理投诉</el-menu-item>
       </el-submenu>
-      <!-- <el-menu-item :index="COMPLAINT">
-        <i class="fa fa-comments"></i>
-        <span>投诉</span>
-      </el-menu-item> -->
       <el-menu-item :index="USER">
         <i class="fa fa-user"></i>
         <span>用户</span>
       </el-menu-item>
-      <el-menu-item :index="GROUP">
-        <i class="fa fa-users"></i>
-        <span>群组</span>
-      </el-menu-item>
+      <el-submenu :index="GROUP">
+        <template slot="title">
+          <i class="fa fa-users"></i>
+          <span>群组</span>
+        </template>
+        <el-menu-item :index="GROUP_ALL">全部群组</el-menu-item>
+        <el-menu-item :index="GROUP_AUDIT">待处理群组</el-menu-item>
+      </el-submenu>
       <el-menu-item :index="FEEDBACK">
         <i class="fa fa-feed"></i>
         <span>反馈</span>
@@ -44,6 +44,8 @@
 const HOME = '/home';
 const USER = '/user/list';
 const GROUP = '/group/list';
+const GROUP_ALL = '/group/all';
+const GROUP_AUDIT = '/group/audit';
 const ORDER = '/order/list';
 const COMPLAINT = '/complaint';
 const COMPLAINT_ALL = '/complaint/all';
@@ -61,6 +63,8 @@ export default {
       HOME,
       USER,
       GROUP,
+      GROUP_ALL,
+      GROUP_AUDIT,
       ORDER,
       COMPLAINT,
       COMPLAINT_ALL,

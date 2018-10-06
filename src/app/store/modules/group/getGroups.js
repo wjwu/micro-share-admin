@@ -28,7 +28,11 @@ export default {
         commit,
         async () => {
           commit('requestGetGroups');
-          let { data } = await axios.get('/admin/group/', {
+          let url = '/admin/group/';
+          if (params.review) {
+            url = '/admin/group/review';
+          }
+          const { data } = await axios.get(url, {
             params: {
               ...params
             }
