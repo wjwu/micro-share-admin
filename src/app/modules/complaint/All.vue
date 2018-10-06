@@ -28,6 +28,11 @@
           {{scope.row.status | compStatus}}
         </template>
       </el-table-column>
+      <el-table-column label="创建时间" width="160">
+        <template slot-scope="scope">
+          {{scope.row.createTime | time}}
+        </template>
+      </el-table-column>
       <!-- <el-table-column label="操作" width="120">
         <template slot-scope="scope">
           <el-button type="text" size="medium" @click="handleView(scope.row.id)">查看详情</el-button>
@@ -36,18 +41,18 @@
     </el-table>
     <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="currentPage" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
     </el-pagination>
-    <user-dialog :visible.sync="complaintDialogVisible" :complaint="complaint" v-loading="detailLoading"></user-dialog>
+    <!-- <user-dialog :visible.sync="complaintDialogVisible" :complaint="complaint" v-loading="detailLoading"></user-dialog> -->
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import UserDialog from './components/UserDialog';
+// import UserDialog from './components/UserDialog';
 
 export default {
-  components: {
-    UserDialog
-  },
+  // components: {
+  //   UserDialog
+  // },
   computed: mapState('complaint', {
     complaints: state => state.getComplaints.data,
     loading: state => state.getComplaints.loading,

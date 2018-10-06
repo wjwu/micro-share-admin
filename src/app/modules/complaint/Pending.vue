@@ -28,32 +28,35 @@
           {{scope.row.status | compStatus}}
         </template>
       </el-table-column>
+      <el-table-column label="创建时间" width="160">
+        <template slot-scope="scope">
+          {{scope.row.createTime | time}}
+        </template>
+      </el-table-column>
       <el-table-column label="操作" width="120">
         <template slot-scope="scope">
-          <el-button type="text" size="medium" @click="handleView(scope.row.id)">查看详情</el-button>
+          <el-button type="text" size="medium" @click="handleView(scope.row)">查看详情</el-button>
         </template>
       </el-table-column>
     </el-table>
     <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="currentPage" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
     </el-pagination>
-    <user-dialog :visible.sync="complaintDialogVisible" :complaint="complaint" v-loading="detailLoading"></user-dialog>
+    <complaint-dialog :visible.sync="complaintDialogVisible" :complaint="complaint" @resolved="load"></complaint-dialog>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import UserDialog from './components/UserDialog';
+import ComplaintDialog from './components/ComplaintDialog';
 
 export default {
   components: {
-    UserDialog
+    ComplaintDialog
   },
   computed: mapState('complaint', {
     complaints: state => state.getComplaints.data,
     loading: state => state.getComplaints.loading,
-    total: state => state.getComplaints.total,
-    complaint: state => state.getComplaint.data,
-    detailLoading: state => state.getComplaint.loading
+    total: state => state.getComplaints.total
   }),
   data() {
     return {
@@ -63,6 +66,7 @@ export default {
         name: '',
         wechatId: ''
       },
+      complaint: null,
       complaintDialogVisible: false
     };
   },
@@ -70,7 +74,7 @@ export default {
     this.load();
   },
   methods: {
-    ...mapActions('complaint', ['getComplaints', 'getComplaint']),
+    ...mapActions('complaint', ['getComplaints']),
     load() {
       let request = {
         pageSize: this.pageSize,
@@ -92,8 +96,8 @@ export default {
       this.currentPage = 1;
       this.load();
     },
-    handleView(id) {
-      this.getComplaint(id);
+    handleView(row) {
+      this.complaint = row;
       this.complaintDialogVisible = true;
     }
   }
