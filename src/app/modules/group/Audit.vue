@@ -22,25 +22,30 @@
       </el-table-column>
       <el-table-column label="描述" prop="description">
       </el-table-column>
+      <el-table-column label="创建时间" width="160">
+        <template slot-scope="scope">
+          {{scope.row.createTime | time}}
+        </template>
+      </el-table-column>
       <el-table-column label="操作" width="120">
         <template slot-scope="scope">
-          <el-button type="text" size="medium" @click="handleView(scope.row.id)">查看详情</el-button>
+          <el-button type="text" size="medium" @click="handleView(scope.row.id)">详情</el-button>
         </template>
       </el-table-column>
     </el-table>
     <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="currentPage" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
     </el-pagination>
-    <user-dialog :visible.sync="groupDialogVisible" :group="group" v-loading="detailLoading"></user-dialog>
+    <group-dialog :visible.sync="groupDialogVisible" :group="group" v-loading="detailLoading"></group-dialog>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import UserDialog from './components/UserDialog';
+import GroupDialog from './components/GroupDialog';
 
 export default {
   components: {
-    UserDialog
+    GroupDialog
   },
   computed: mapState('group', {
     groups: state => state.getGroups.data,
@@ -69,6 +74,7 @@ export default {
       let request = {
         pageSize: this.pageSize,
         currentPage: this.currentPage,
+        review: true,
         ...this.searchForm
       };
       this.getGroups(request);

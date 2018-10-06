@@ -20,7 +20,7 @@
       </el-table-column>
       <el-table-column label="操作" width="120">
         <template slot-scope="scope">
-          <el-button type="text" size="medium" @click="handleView(scope.row.id)">查看详情</el-button>
+          <el-button type="text" size="medium" @click="handleView(scope.row.id)">详情</el-button>
         </template>
       </el-table-column>
     </el-table>
