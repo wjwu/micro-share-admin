@@ -24,7 +24,7 @@
       </el-table-column>
       <el-table-column label="手机号" width="120" prop="phone">
       </el-table-column>
-      <el-table-column label="微信号" prop="wechat">
+      <el-table-column label="微信号" prop="wechatId">
       </el-table-column>
       <el-table-column label="性别" width="80">
         <template slot-scope="scope">

@@ -1,7 +1,8 @@
 <template>
   <div>
     <el-form inline label-width="80px" :model="searchForm">
-      <el-form-item label="名称：">
+      <el-form-item label="时间：">
+        <!-- 一天内->day，一周内->week，一月内->mon -->
         <el-input size="medium" v-model="searchForm.name"></el-input>
       </el-form-item>
       <!-- <el-form-item label="微信号：">
