@@ -1,5 +1,5 @@
 <template>
-  <el-dialog title="订单详情" :visible.sync="visible" width="50%" :before-close="handleClose">
+  <el-dialog title="订单详情" :visible="visible" width="50%" :before-close="handleClose">
     <el-row v-if="order">
       <el-col :span="12" v-if="order.originalOrder">
         <h3>订单信息：</h3>

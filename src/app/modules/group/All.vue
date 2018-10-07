@@ -4,8 +4,16 @@
       <el-form-item label="名称：">
         <el-input size="medium" v-model="searchForm.name"></el-input>
       </el-form-item>
-      <el-form-item label="微信号：">
-        <el-input size="medium" v-model="searchForm.wechatId"></el-input>
+      <el-form-item label="人数：">
+        <el-select size="medium" v-model="searchForm.people">
+          <el-option label="全部" value="0-9999"></el-option>
+          <el-option label="0-100" value="0-100"></el-option>
+          <el-option label="100-200" value="100-200"></el-option>
+          <el-option label="200-300" value="200-300"></el-option>
+          <el-option label="300-400" value="300-400"></el-option>
+          <el-option label="400-500" value="400-500"></el-option>
+          <el-option label="500以上" value="500-9999"></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" size="medium" @click="handleSearch">搜索</el-button>
@@ -60,7 +68,7 @@ export default {
       currentPage: 1,
       searchForm: {
         name: '',
-        wechatId: ''
+        people: '0-9999'
       },
       groupDialogVisible: false
     };
@@ -74,7 +82,9 @@ export default {
       let request = {
         pageSize: this.pageSize,
         currentPage: this.currentPage,
-        ...this.searchForm
+        name: this.searchForm.name,
+        peopleSizeStart: this.searchForm.people.split('-')[0],
+        peopleSizeEnd: this.searchForm.people.split('-')[1]
       };
       this.getGroups(request);
     },
@@ -97,10 +107,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.head-phone {
-  height: 60px;
-  width: 60px;
-}
-</style>
 

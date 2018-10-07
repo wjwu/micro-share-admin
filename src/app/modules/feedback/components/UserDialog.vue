@@ -1,5 +1,5 @@
 <template>
-  <el-dialog title="用户详情" :visible.sync="visible" width="50%" :before-close="handleClose">
+  <el-dialog title="用户详情" :visible="visible" width="50%" :before-close="handleClose">
     <el-form label-width="100px" v-if="user">
       <el-form-item label="头像：">
         <img :src="user.headPhoto" class="head-phone" />

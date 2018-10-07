@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form inline label-width="80px" :model="searchForm">
+    <!-- <el-form inline label-width="80px" :model="searchForm">
       <el-form-item label="名称：">
         <el-input size="medium" v-model="searchForm.name"></el-input>
       </el-form-item>
@@ -10,7 +10,7 @@
       <el-form-item>
         <el-button type="primary" size="medium" @click="handleSearch">搜索</el-button>
       </el-form-item>
-    </el-form>
+    </el-form> -->
     <el-table :data="groups" border style="width:100%" header-row-class-name="table-header" v-loading="loading">
       <el-table-column label="名称" width="160" prop="name">
       </el-table-column>
@@ -35,7 +35,7 @@
     </el-table>
     <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="currentPage" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
     </el-pagination>
-    <group-dialog :visible.sync="groupDialogVisible" :group="group" v-loading="detailLoading"></group-dialog>
+    <group-dialog :visible.sync="groupDialogVisible" :group="group" v-loading="detailLoading" :do-audit="handleAudit"></group-dialog>
   </div>
 </template>
 
@@ -52,7 +52,7 @@ export default {
     loading: state => state.getGroups.loading,
     total: state => state.getGroups.total,
     group: state => state.getGroup.data,
-    detailLoading: state => state.getGroup.loading
+    detailLoading: state => state.getGroup.loading || state.updateGroup.loading
   }),
   data() {
     return {
@@ -62,20 +62,21 @@ export default {
         name: '',
         wechatId: ''
       },
-      groupDialogVisible: false
+      groupDialogVisible: false,
+      selectedGroupId: null
     };
   },
   mounted() {
     this.load();
   },
   methods: {
-    ...mapActions('group', ['getGroups', 'getGroup']),
+    ...mapActions('group', ['getGroups', 'getGroup', 'updateGroup']),
     load() {
       let request = {
         pageSize: this.pageSize,
         currentPage: this.currentPage,
-        review: true,
-        ...this.searchForm
+        review: true
+        // ...this.searchForm
       };
       this.getGroups(request);
     },
@@ -92,16 +93,19 @@ export default {
       this.load();
     },
     handleView(id) {
+      this.selectedGroupId = id;
       this.getGroup(id);
       this.groupDialogVisible = true;
+    },
+    async handleAudit(type) {
+      await this.updateGroup({
+        type,
+        id: this.selectedGroupId
+      });
+      this.groupDialogVisible = false;
+      this.load();
     }
   }
 };
 </script>
-<style lang="scss" scoped>
-.head-phone {
-  height: 60px;
-  width: 60px;
-}
-</style>
 

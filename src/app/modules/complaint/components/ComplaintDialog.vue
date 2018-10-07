@@ -1,5 +1,5 @@
 <template>
-  <el-dialog title="投诉详情" :visible.sync="visible" width="60%" :before-close="handleClose">
+  <el-dialog title="投诉详情" :visible="visible" width="60%" :before-close="handleClose">
     <el-row v-if="complaint">
       <el-col :span="12">
         <el-form label-width="100px">
