@@ -3,7 +3,6 @@ var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 // var CopyWebpackPlugin = require('copy-webpack-plugin');
 var VueLoaderPlugin = require('vue-loader/lib/plugin');
-var ip = require('ip');
 
 var src = path.join(__dirname, '..', 'src');
 
@@ -103,8 +102,5 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.vue']
-  },
-  devServer: {
-    host: ip.address()
   }
 };

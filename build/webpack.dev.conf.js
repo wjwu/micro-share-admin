@@ -4,6 +4,7 @@ var merge = require('webpack-merge');
 var baseConfig = require('./webpack.base.conf');
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
+var ip = require('ip');
 
 var dist = path.join(__dirname, '..', 'dist');
 
@@ -24,7 +25,7 @@ var config = merge(baseConfig, {
         NODE_ENV: '"development"',
         API_HOST: '"http://web.j-coder.com"'
       }
-    }),
+    })
     // new HtmlWebpackExternalsPlugin({
     //   externals: [
     //     {
@@ -39,7 +40,10 @@ var config = merge(baseConfig, {
     //   ],
     //   files: ['index.html']
     // })
-  ]
+  ],
+  devServer: {
+    host: ip.address()
+  }
 });
 
 module.exports = config;
