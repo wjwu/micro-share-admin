@@ -10,14 +10,20 @@
           <el-form-item label="创建时间：">
             {{order.originalOrder.createTime | time}}
           </el-form-item>
-          <!-- <el-form-item label="服务费：">
-            {{order.originalOrder.groupMemberCount | price}}
-          </el-form-item> -->
+          <el-form-item label="匹配范围：">
+            {{order.originalOrder.matchRange}}
+          </el-form-item>
+          <el-form-item label="服务费：">
+            {{order.originalOrder.price}}
+          </el-form-item>
           <el-form-item label="订单状态：">
             {{order.originalOrder.status | orderStatus}}
           </el-form-item>
           <el-form-item label="群名称：">
             {{order.originalOrder.groupName}}
+          </el-form-item>
+          <el-form-item label="手机号：">
+            {{order.originalOrder.phone}}
           </el-form-item>
           <el-form-item label="群行业：">
             {{order.originalOrder.industry}}
@@ -27,9 +33,9 @@
           </el-form-item>
         </el-form>
       </el-col>
-      <el-col :span="12" v-if="order.matchedOrder">
+      <el-col :span="12">
         <h3>商伴信息：</h3>
-        <el-form label-width="100px">
+        <el-form label-width="100px" v-if="order.matchedOrder">
           <el-form-item label="手机号：">
             {{order.matchedOrder.phone}}
           </el-form-item>

@@ -8,7 +8,7 @@
         <el-input size="medium" v-model="searchForm.phone"></el-input>
       </el-form-item>
       <el-form-item label="微信号：">
-        <el-input size="medium" v-model="searchForm.wechat"></el-input>
+        <el-input size="medium" v-model="searchForm.wechatId"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" size="medium" @click="handleSearch">搜索</el-button>
@@ -66,7 +66,7 @@ export default {
       currentPage: 1,
       searchForm: {
         userName: '',
-        wechat: '',
+        wechatId: '',
         phone: ''
       },
       userDialogVisible: false

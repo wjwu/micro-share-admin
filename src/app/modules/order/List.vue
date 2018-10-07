@@ -2,8 +2,12 @@
   <div>
     <el-form inline label-width="80px" :model="searchForm">
       <el-form-item label="时间：">
-        <!-- 一天内->day，一周内->week，一月内->mon -->
-        <el-input size="medium" v-model="searchForm.name"></el-input>
+        <el-select size="medium" v-model="searchForm.timeFlag">
+          <el-option label="全部" value="all"></el-option>
+          <el-option label="一天内" value="day"></el-option>
+          <el-option label="一周内" value="week"></el-option>
+          <el-option label="一月内" value="mon"></el-option>
+        </el-select>
       </el-form-item>
       <!-- <el-form-item label="微信号：">
         <el-input size="medium" v-model="searchForm.wechatId"></el-input>
@@ -13,10 +17,12 @@
       </el-form-item>
     </el-form>
     <el-table :data="orders" border style="width:100%" header-row-class-name="table-header" v-loading="loading">
-      <el-table-column label="名称" prop="groupName">
+      <el-table-column label="订单号" width="140" prop="number">
       </el-table-column>
-      <el-table-column label="微信号" width="220" prop="wechat">
+      <el-table-column label="群名称" prop="groupName">
       </el-table-column>
+      <!-- <el-table-column label="微信号" width="220" prop="wechat">
+      </el-table-column> -->
       <el-table-column label="人数" width="100" prop="groupMemberCount">
       </el-table-column>
       <el-table-column label="行业" width="100" prop="industry">
@@ -24,6 +30,11 @@
       <el-table-column label="状态" width="120">
         <template slot-scope="scope">
           {{scope.row.status | orderStatus}}
+        </template>
+      </el-table-column>
+      <el-table-column label="创建时间" width="160">
+        <template slot-scope="scope">
+          {{scope.row.createTime | time}}
         </template>
       </el-table-column>
       <el-table-column label="操作" width="120">
@@ -58,8 +69,7 @@ export default {
       pageSize: 10,
       currentPage: 1,
       searchForm: {
-        name: '',
-        wechatId: ''
+        timeFlag: 'all'
       },
       orderDialogVisible: false
     };
