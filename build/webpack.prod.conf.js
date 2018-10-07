@@ -61,7 +61,7 @@ var config = merge(baseConfig, {
         },
         {
           module: 'element-ui',
-          entry: 'https://cdn.bootcss.com/element-ui/2.0.11/index.js'
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.4.0/index.js'
         },
         {
           module: 'axios',
@@ -78,7 +78,7 @@ var config = merge(baseConfig, {
         },
         {
           module: 'element-ui',
-          entry: 'https://cdn.bootcss.com/element-ui/2.0.11/index.js'
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.4.0/index.js'
         },
         {
           module: 'vue-router',
