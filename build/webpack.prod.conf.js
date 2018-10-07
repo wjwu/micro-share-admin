@@ -17,6 +17,8 @@ var config = merge(baseConfig, {
     publicPath: './'
   },
   externals: {
+    vue: 'Vue',
+    'element-ui': 'ELEMENT',
     axios: 'axios',
     vuex: 'Vuex',
     'vue-router': 'VueRouter',
