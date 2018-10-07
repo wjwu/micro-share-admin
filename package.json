@@ -6,9 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development --inline --progress  --config build/webpack.dev.conf.js",
     "dev-hot": "webpack-dev-server --mode development --hot --inline --progress --config build/webpack.dev.conf.js",
-    "dev-host": "webpack-dev-server --mode development --host 192.168.200.99 --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "cross-env NODE_ENV=test webpack --mode production --config build/webpack.prod.conf.js --progress --colors --display-error-details",
+    "build": "webpack --mode production --config build/webpack.prod.conf.js --progress --colors --display-error-details"
   },
   "author": "wjwu",
   "license": "ISC",
@@ -17,7 +16,7 @@
     "axios": "^0.18.0",
     "ckeditor": "^4.10.1",
     "date-fns": "^1.29.0",
-    "element-ui": "^2.4.7",
+    "element-ui": "^2.4.8",
     "lodash": "^4.17.11",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
@@ -45,6 +44,7 @@
     "file-loader": "^2.0.0",
     "html-webpack-externals-plugin": "^3.8.0",
     "html-webpack-plugin": "^4.0.0-beta.1",
+    "ip": "^1.1.5",
     "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "^4.9.3",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -54,7 +54,7 @@
     "vue-loader": "^15.4.2",
     "vue-template-compiler": "^2.5.17",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.1",
+    "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9",
     "webpack-merge": "^4.1.4"
   },

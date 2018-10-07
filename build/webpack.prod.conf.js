@@ -57,15 +57,15 @@ var config = merge(baseConfig, {
       externals: [
         {
           module: 'vue',
-          entry: 'https://cdn.bootcss.com/vue/2.5.13/vue.runtime.min.js'
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.runtime.min.js'
         },
         {
           module: 'element-ui',
-          entry: 'https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.4.0/index.js'
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.4.7/index.js'
         },
         {
           module: 'axios',
-          entry: 'https://cdn.bootcss.com/axios/0.17.1/axios.min.js'
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js'
         }
       ],
       files: ['login.html']
@@ -74,27 +74,27 @@ var config = merge(baseConfig, {
       externals: [
         {
           module: 'vue',
-          entry: 'https://cdn.bootcss.com/vue/2.5.13/vue.runtime.min.js'
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.runtime.min.js'
         },
         {
           module: 'element-ui',
-          entry: 'https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.4.0/index.js'
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.4.7/index.js'
         },
         {
           module: 'vue-router',
-          entry: 'https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js'
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.min.js'
         },
         {
           module: 'vuex',
-          entry: 'https://cdn.bootcss.com/vuex/3.0.1/vuex.min.js'
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.min.js'
         },
         {
           module: 'axios',
-          entry: 'https://cdn.bootcss.com/axios/0.17.1/axios.min.js'
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js'
         },
         {
           module: 'lodash',
-          entry: 'https://cdn.bootcss.com/lodash.js/4.17.9/lodash.min.js'
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'
         },
         // {
         //   module: 'ckeditor',
