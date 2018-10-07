@@ -40,7 +40,7 @@
       </el-form>
     </el-row>
     <el-collapse v-if="group && group.roomMsg">
-      <el-collapse-item title="群聊天纪录">
+      <el-collapse-item title="群聊天纪录（点击查看）">
         <div v-for="msg in group.roomMsg" :key="msg.id">
           <span>{{msg.senderName}}（{{msg.createTime | time}}）：</span>
           <span>{{msg.text}}</span>
