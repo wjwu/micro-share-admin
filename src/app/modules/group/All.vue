@@ -28,7 +28,7 @@
       </el-table-column>
       <el-table-column label="位置" width="180" prop="location" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column label="描述" prop="description">
+      <el-table-column label="描述" prop="desc">
       </el-table-column>
       <el-table-column label="创建时间" width="160">
         <template slot-scope="scope">
