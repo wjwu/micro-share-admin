@@ -24,7 +24,13 @@ export default {
         commit,
         async () => {
           commit('requestUpdateComplaint');
-          await axios.put(`/admin/complaint/${params.id}/${params.type}`);
+          await axios.put(
+            `/admin/complaint/${params.id}/${params.type}`,
+            null,
+            {
+              params: { handleContent: params.content }
+            }
+          );
           commit('successUpdateComplaint');
           commit('global/notifySuccess', '操作成功', { root: true });
         },

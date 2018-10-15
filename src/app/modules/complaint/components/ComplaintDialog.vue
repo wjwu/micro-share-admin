@@ -40,6 +40,12 @@
         </el-form>
       </el-col>
     </el-row>
+    <el-form label-width="100px" ref="complaintForm" :model="complaintForm" :rules="complaintFormRules">
+      <el-form-item label="处理理由：" prop="content">
+        <el-input type="textarea" rows="5" placeholder="请输入理由" v-model="complaintForm.content">
+        </el-input>
+      </el-form-item>
+    </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button type="success" size="medium" @click="handleSuccess" :loading="loading">处理成功</el-button>
       <el-button type="danger" size="medium" @click="handleRefuse" :loading="loading">处理拒绝</el-button>
@@ -61,6 +67,18 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      complaintForm: {
+        content: ''
+      },
+      complaintFormRules: {
+        content: [
+          { required: true, message: '请输入处理理由', trigger: 'change' }
+        ]
+      }
+    };
+  },
   computed: mapState('complaint', {
     loading: state => state.updateComplaint.loading
   }),
@@ -73,20 +91,30 @@ export default {
       return [];
     },
     async handleSuccess() {
-      await this.updateComplaint({
-        id: this.complaint.id,
-        type: 'success'
+      this.$refs.complaintForm.validate(async valid => {
+        if (valid) {
+          await this.updateComplaint({
+            id: this.complaint.id,
+            type: 'success',
+            content: this.complaintForm.content
+          });
+          this.handleClose();
+          this.$emit('resolved');
+        }
       });
-      this.handleClose();
-      this.$emit('resolved');
     },
     async handleRefuse() {
-      await this.updateComplaint({
-        id: this.complaint.id,
-        type: 'failed'
+      this.$refs.complaintForm.validate(async valid => {
+        if (valid) {
+          await this.updateComplaint({
+            id: this.complaint.id,
+            type: 'failed',
+            content: this.complaintForm.content
+          });
+          this.handleClose();
+          this.$emit('resolved');
+        }
       });
-      this.handleClose();
-      this.$emit('resolved');
     },
     handleClose() {
       this.$emit('update:visible', false);
