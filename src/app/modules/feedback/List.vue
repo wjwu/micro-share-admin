@@ -12,35 +12,47 @@
       </el-form-item> -->
     </el-form>
     <el-table :data="feedbacks" border style="width:100%" header-row-class-name="table-header" v-loading="loading">
-      <el-table-column label="用户名" width="120" prop="username">
+      <el-table-column label="成员账号" width="120" prop="username">
       </el-table-column>
-      <el-table-column label="内容" prop="content" show-overflow-tooltip>
+      <el-table-column label="建议类型" width="160" prop="type">
       </el-table-column>
-      <el-table-column label="类型" width="160" prop="type">
+      <el-table-column label="建议内容" prop="content" show-overflow-tooltip>
       </el-table-column>
-      <!-- <el-table-column label="操作" width="120">
+      <el-table-column label="提交时间" width="160">
         <template slot-scope="scope">
-          <el-button type="text" size="medium" @click="handleView(scope.row.id)">详情</el-button>
+          {{scope.row.createTime | time}}
         </template>
-      </el-table-column> -->
+      </el-table-column>
+      <el-table-column label="状态" width="80">
+        <template slot-scope="scope">
+          {{scope.row.status | feedbackStatus}}
+        </template>
+      </el-table-column>
+      <el-table-column label="操作" width="100">
+        <template slot-scope="scope">
+          <el-button v-if="scope.row.status === 'SUBMIT'" type="text" size="medium" @click="handleAccept(scope.row)">采纳</el-button>
+          <el-button v-if="scope.row.status === 'SUBMIT'" type="text" size="medium" @click="handleRefuse(scope.row.id)">拒绝</el-button>
+        </template>
+      </el-table-column>
     </el-table>
     <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="currentPage" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
     </el-pagination>
-    <!-- <user-dialog :visible.sync="complaintDialogVisible" :complaint="complaint"></user-dialog> -->
+    <accept-dialog :visible.sync="acceptDialogVisible" :feedback="feedback"></accept-dialog>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
-// import UserDialog from './components/UserDialog';
+import AcceptDialog from './components/AcceptDialog';
 
 export default {
-  // components: {
-  //   UserDialog
-  // },
+  components: {
+    AcceptDialog
+  },
   computed: mapState('feedback', {
     feedbacks: state => state.getFeedbacks.data,
-    loading: state => state.getFeedbacks.loading,
+    loading: state =>
+      state.getFeedbacks.loading || state.refuseFeedback.loading,
     total: state => state.getFeedbacks.total
   }),
   data() {
@@ -48,17 +60,18 @@ export default {
       pageSize: 10,
       currentPage: 1,
       searchForm: {
-        name: '',
-        wechatId: ''
+        // name: '',
+        // wechatId: ''
       },
-      complaintDialogVisible: false
+      feedback: null,
+      acceptDialogVisible: false
     };
   },
   mounted() {
     this.load();
   },
   methods: {
-    ...mapActions('feedback', ['getFeedbacks']),
+    ...mapActions('feedback', ['getFeedbacks', 'refuseFeedback']),
     load() {
       let request = {
         pageSize: this.pageSize,
@@ -79,17 +92,15 @@ export default {
       this.currentPage = 1;
       this.load();
     },
-    handleView(id) {
-      this.getComplaint(id);
-      this.complaintDialogVisible = true;
+    handleAccept(row) {
+      this.feedback = { ...row };
+      this.acceptDialogVisible = true;
+    },
+    async handleRefuse(id) {
+      await this.$confirm('您确定要拒绝该条建议？');
+      this.refuseFeedback(id);
     }
   }
 };
 </script>
-<style lang="scss" scoped>
-.head-phone {
-  height: 60px;
-  width: 60px;
-}
-</style>
 

@@ -6,7 +6,7 @@
       </el-form-item>
     </el-form>
     <el-table :data="notices" border style="width:100%" header-row-class-name="table-header" v-loading="loading">
-      <el-table-column label="标题" width="120" prop="title">
+      <el-table-column label="标题" width="180" prop="title">
       </el-table-column>
       <el-table-column label="内容" prop="context" show-overflow-tooltip>
       </el-table-column>

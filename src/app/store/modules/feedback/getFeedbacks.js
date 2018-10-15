@@ -6,11 +6,13 @@ export default {
     getFeedbacks: {
       data: [],
       loading: false,
-      total: 0
+      total: 0,
+      params: null
     }
   },
   mutations: {
-    requestGetFeedbacks(state) {
+    requestGetFeedbacks(state, params) {
+      state.getFeedbacks.params = params;
       state.getFeedbacks.loading = true;
     },
     successGetFeedbacks(state, data) {
@@ -27,7 +29,7 @@ export default {
       return helper.actionWrapper(
         commit,
         async () => {
-          commit('requestGetFeedbacks');
+          commit('requestGetFeedbacks', params);
           let { data } = await axios.get('/admin/feedback', {
             params: {
               ...params
