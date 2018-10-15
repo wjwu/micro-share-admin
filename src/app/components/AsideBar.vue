@@ -30,7 +30,7 @@
           <span>群组</span>
         </template>
         <el-menu-item :index="GROUP_ALL">全部群组</el-menu-item>
-        <el-menu-item :index="GROUP_AUDIT">待处理群组</el-menu-item>
+        <el-menu-item :index="GROUP_AUDIT">待审核群组</el-menu-item>
       </el-submenu>
       <el-menu-item :index="FEEDBACK">
         <i class="fa fa-feed"></i>
