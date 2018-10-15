@@ -7,6 +7,7 @@ import group from './group/route';
 import order from './order/route';
 import complaint from './complaint/route';
 import feedback from './feedback/route';
+import notice from './notice/route';
 
 Vue.use(VueRouter);
 
@@ -25,7 +26,8 @@ const router = new VueRouter({
     group,
     order,
     complaint,
-    feedback
+    feedback,
+    notice
   ]
 });
 

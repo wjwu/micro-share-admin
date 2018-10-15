@@ -36,6 +36,10 @@
         <i class="fa fa-feed"></i>
         <span>反馈</span>
       </el-menu-item>
+      <el-menu-item :index="NOTICE">
+        <i class="fa fa-bullhorn"></i>
+        <span>公告</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -51,6 +55,7 @@ const COMPLAINT = '/complaint';
 const COMPLAINT_ALL = '/complaint/all';
 const COMPLAINT_PENDING = '/complaint/pending';
 const FEEDBACK = '/feedback/list';
+const NOTICE = '/notice/list';
 
 export default {
   computed: {
@@ -69,7 +74,8 @@ export default {
       COMPLAINT,
       COMPLAINT_ALL,
       COMPLAINT_PENDING,
-      FEEDBACK
+      FEEDBACK,
+      NOTICE
     };
   }
 };
