@@ -16,7 +16,9 @@
       </el-table-column>
       <el-table-column label="被投诉人" width="120" prop="toName">
       </el-table-column>
-      <el-table-column label="投诉内容" prop="content" show-overflow-tooltip>
+      <el-table-column label="投诉方描述" prop="content">
+      </el-table-column>
+      <el-table-column label="被投诉方描述" prop="refuseContent">
       </el-table-column>
       <el-table-column label="类型" width="140">
         <template slot-scope="scope">
@@ -27,6 +29,8 @@
         <template slot-scope="scope">
           {{scope.row.status | compStatus}}
         </template>
+      </el-table-column>
+      <el-table-column label="客服处理意见" prop="handleContent">
       </el-table-column>
       <el-table-column label="创建时间" width="160">
         <template slot-scope="scope">
