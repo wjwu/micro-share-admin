@@ -10,6 +10,37 @@
       <el-form-item label="微信号：">
         <el-input size="medium" v-model="searchForm.wechatId"></el-input>
       </el-form-item>
+      <el-form-item label="信用分：">
+        <el-select size="medium" v-model="searchForm.scoreStart" style="width:80px;">
+          <el-option label="全部" value=""></el-option>
+          <el-option label="0" value="0"></el-option>
+          <el-option label="1" value="1"></el-option>
+          <el-option label="2" value="2"></el-option>
+          <el-option label="3" value="3"></el-option>
+          <el-option label="4" value="4"></el-option>
+          <el-option label="5" value="5"></el-option>
+          <el-option label="6" value="6"></el-option>
+          <el-option label="7" value="7"></el-option>
+          <el-option label="8" value="8"></el-option>
+          <el-option label="9" value="9"></el-option>
+          <el-option label="10" value="10"></el-option>
+        </el-select>
+        <span>&nbsp;&nbsp;~&nbsp;&nbsp;</span>
+        <el-select size="medium" v-model="searchForm.scoreEnd" style="width:80px;">
+          <el-option label="全部" value=""></el-option>
+          <el-option label="0" value="0"></el-option>
+          <el-option label="1" value="1"></el-option>
+          <el-option label="2" value="2"></el-option>
+          <el-option label="3" value="3"></el-option>
+          <el-option label="4" value="4"></el-option>
+          <el-option label="5" value="5"></el-option>
+          <el-option label="6" value="6"></el-option>
+          <el-option label="7" value="7"></el-option>
+          <el-option label="8" value="8"></el-option>
+          <el-option label="9" value="9"></el-option>
+          <el-option label="10" value="10"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" size="medium" @click="handleSearch">搜索</el-button>
       </el-form-item>
@@ -67,7 +98,9 @@ export default {
       searchForm: {
         userName: '',
         wechatId: '',
-        phone: ''
+        phone: '',
+        scoreStart: '',
+        scoreEnd: ''
       },
       userDialogVisible: false
     };
