@@ -20,10 +20,14 @@
         <el-menu-item :index="COMPLAINT_ALL">全部投诉</el-menu-item>
         <el-menu-item :index="COMPLAINT_PENDING">待处理投诉</el-menu-item>
       </el-submenu>
-      <el-menu-item :index="USER">
-        <i class="fa fa-user"></i>
-        <span>用户</span>
-      </el-menu-item>
+      <el-submenu :index="USER">
+        <template slot="title">
+          <i class="fa fa-user"></i>
+          <span>用户</span>
+        </template>
+        <el-menu-item :index="USER_ALL">全部用户</el-menu-item>
+        <el-menu-item :index="USER_VIP">管家管理</el-menu-item>
+      </el-submenu>
       <el-submenu :index="GROUP">
         <template slot="title">
           <i class="fa fa-users"></i>
@@ -46,7 +50,9 @@
 
 <script>
 const HOME = '/home';
-const USER = '/user/list';
+const USER = '/user';
+const USER_ALL = '/user/all';
+const USER_VIP = '/user/vip';
 const GROUP = '/group/list';
 const GROUP_ALL = '/group/all';
 const GROUP_AUDIT = '/group/audit';
@@ -67,6 +73,8 @@ export default {
     return {
       HOME,
       USER,
+      USER_ALL,
+      USER_VIP,
       GROUP,
       GROUP_ALL,
       GROUP_AUDIT,

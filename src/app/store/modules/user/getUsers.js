@@ -6,11 +6,13 @@ export default {
     getUsers: {
       data: [],
       loading: false,
-      total: 0
+      total: 0,
+      params: null
     }
   },
   mutations: {
-    requestGetUsers(state) {
+    requestGetUsers(state, params) {
+      state.getUsers.params = params;
       state.getUsers.loading = true;
     },
     successGetUsers(state, data) {
@@ -27,7 +29,7 @@ export default {
       return helper.actionWrapper(
         commit,
         async () => {
-          commit('requestGetUsers');
+          commit('requestGetUsers', params);
           let { data } = await axios.get('/admin/user', {
             params: {
               ...params
