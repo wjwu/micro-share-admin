@@ -18,9 +18,7 @@
       </el-table-column>
       <el-table-column label="人数" width="80" prop="count">
       </el-table-column>
-      <el-table-column label="位置" width="180" prop="location" show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column label="描述" prop="description">
+      <el-table-column label="描述" prop="description" show-overflow-tooltip>
       </el-table-column>
       <el-table-column label="创建时间" width="160">
         <template slot-scope="scope">
@@ -35,7 +33,7 @@
     </el-table>
     <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="currentPage" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
     </el-pagination>
-    <group-dialog :visible.sync="groupDialogVisible" :group="group" v-loading="detailLoading" :do-audit="handleAudit"></group-dialog>
+    <group-dialog :visible.sync="groupDialogVisible" :group="group" v-loading="detailLoading" do-audit></group-dialog>
   </div>
 </template>
 
@@ -52,7 +50,7 @@ export default {
     loading: state => state.getGroups.loading,
     total: state => state.getGroups.total,
     group: state => state.getGroup.data,
-    detailLoading: state => state.getGroup.loading || state.updateGroup.loading
+    detailLoading: state => state.getGroup.loading
   }),
   data() {
     return {
@@ -62,15 +60,14 @@ export default {
         name: '',
         wechatId: ''
       },
-      groupDialogVisible: false,
-      selectedGroupId: null
+      groupDialogVisible: false
     };
   },
   mounted() {
     this.load();
   },
   methods: {
-    ...mapActions('group', ['getGroups', 'getGroup', 'updateGroup']),
+    ...mapActions('group', ['getGroups', 'getGroup']),
     load() {
       let request = {
         pageSize: this.pageSize,
@@ -93,17 +90,8 @@ export default {
       this.load();
     },
     handleView(id) {
-      this.selectedGroupId = id;
       this.getGroup(id);
       this.groupDialogVisible = true;
-    },
-    async handleAudit(type) {
-      await this.updateGroup({
-        type,
-        id: this.selectedGroupId
-      });
-      this.groupDialogVisible = false;
-      this.load();
     }
   }
 };

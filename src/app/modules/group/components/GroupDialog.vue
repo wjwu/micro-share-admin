@@ -1,7 +1,7 @@
 <template>
   <el-dialog title="群组详情" :visible="visible" width="50%" :before-close="handleClose">
     <el-row>
-      <el-form label-width="100px" v-if="group && group.group">
+      <el-form label-width="100px" v-if="group && group.group" ref="groupForm">
         <el-col :span="12">
           <el-form-item label="名称：">
             {{group.group.name}}
@@ -37,6 +37,32 @@
             {{group.group.desc}}
           </el-form-item>
         </el-col>
+        <el-col :span="12" v-if="!doAudit">
+          <el-form-item label="审核状态：">
+            {{group.group.status | groupAuditStatus}}
+          </el-form-item>
+        </el-col>
+        <el-col :span="12" v-if="!doAudit && group.group.status === 'REVIEW_FAILED'">
+          <el-form-item label="不通过原因：">
+            {{group.group.failedType | groupFailType}}
+          </el-form-item>
+        </el-col>
+        <el-col v-if="doAudit">
+          <el-form-item label="审核：">
+            <el-radio-group v-model="result">
+              <el-radio label="success">通过</el-radio>
+              <el-radio label="fail">不通过</el-radio>
+            </el-radio-group>
+          </el-form-item>
+        </el-col>
+        <el-col v-if="doAudit">
+          <el-form-item label="不通过原因：" v-if="result === 'fail'">
+            <el-radio-group v-model="reason">
+              <el-radio label="ILLAGE">非法</el-radio>
+              <el-radio label="DIE">僵尸群</el-radio>
+            </el-radio-group>
+          </el-form-item>
+        </el-col>
       </el-form>
     </el-row>
     <el-collapse v-if="group && group.roomMsg">
@@ -48,14 +74,15 @@
       </el-collapse-item>
     </el-collapse>
     <span slot="footer" class="dialog-footer">
-      <el-button v-if="doAudit" size="medium" type="success" @click="handleClick('success')">审核通过</el-button>
-      <el-button v-if="doAudit" size="medium" type="danger" @click="handleClick('fail')">审核失败</el-button>
+      <el-button v-if="doAudit" size="medium" type="primary" @click="handleClick" :loading="loading">保存</el-button>
       <el-button size="medium" @click="handleClose">关闭</el-button>
     </span>
   </el-dialog>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
   props: {
     group: {
@@ -66,15 +93,29 @@ export default {
       required: true
     },
     doAudit: {
-      type: Function
+      type: Boolean,
+      default: false
     }
   },
+  computed: mapState('group', {
+    loading: state => state.updateGroup.loading
+  }),
+  data() {
+    return { result: 'success', reason: 'ILLAGE' };
+  },
   methods: {
+    ...mapActions('group', ['updateGroup']),
     handleClose() {
       this.$emit('update:visible', false);
     },
-    handleClick(type) {
-      this.doAudit(type);
+    async handleClick() {
+      await this.updateGroup({
+        id: this.group.group.id,
+        result: this.result,
+        reason: this.reason
+      });
+      this.handleClose();
+      this.$refs.groupForm.resetFields();
     }
   }
 };

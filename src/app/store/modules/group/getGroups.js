@@ -6,11 +6,13 @@ export default {
     getGroups: {
       data: [],
       loading: false,
-      total: 0
+      total: 0,
+      params: null
     }
   },
   mutations: {
-    requestGetGroups(state) {
+    requestGetGroups(state, params) {
+      state.getGroups.params = params;
       state.getGroups.loading = true;
     },
     successGetGroups(state, data) {
@@ -27,7 +29,7 @@ export default {
       return helper.actionWrapper(
         commit,
         async () => {
-          commit('requestGetGroups');
+          commit('requestGetGroups', params);
           let url = '/admin/group/';
           if (params.review) {
             url = '/admin/group/review';

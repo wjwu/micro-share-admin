@@ -59,9 +59,12 @@
       </el-table-column>
       <el-table-column label="行业" width="100" prop="industry">
       </el-table-column>
-      <el-table-column label="位置" width="180" prop="location" show-overflow-tooltip>
+      <el-table-column label="描述" prop="desc" show-overflow-tooltip>
       </el-table-column>
-      <el-table-column label="描述" prop="desc">
+      <el-table-column label="审核状态" width="80">
+        <template slot-scope="scope">
+          {{scope.row.status | groupAuditStatus}}
+        </template>
       </el-table-column>
       <el-table-column label="创建时间" width="160">
         <template slot-scope="scope">
