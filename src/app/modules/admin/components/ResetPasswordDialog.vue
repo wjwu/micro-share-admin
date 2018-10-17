@@ -12,8 +12,8 @@
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
-      <el-button size="medium" @click="handleClose">取 消</el-button>
       <el-button size="medium" type="primary" :loading="loading" @click="handleEdit">确 定</el-button>
+      <el-button size="medium" @click="handleClose">取 消</el-button>
     </div>
   </el-dialog>
 </template>
