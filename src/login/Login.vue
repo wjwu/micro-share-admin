@@ -67,7 +67,7 @@ export default {
             }
           });
           this.loading = false;
-          session.setObject('operator', this.loginForm.userName.trim());
+          session.setString('operator', this.loginForm.userName.trim());
           window.location.href = './#/home';
         } catch (e) {
           this.loading = false;

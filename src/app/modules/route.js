@@ -8,6 +8,7 @@ import order from './order/route';
 import complaint from './complaint/route';
 import feedback from './feedback/route';
 import notice from './notice/route';
+import admin from './admin/route';
 
 Vue.use(VueRouter);
 
@@ -27,7 +28,8 @@ const router = new VueRouter({
     order,
     complaint,
     feedback,
-    notice
+    notice,
+    admin
   ]
 });
 

@@ -44,11 +44,17 @@
         <i class="fa fa-bullhorn"></i>
         <span>公告</span>
       </el-menu-item>
+      <el-menu-item :index="ADMINS" v-if="userName === 'admin'">
+        <i class="fa fa-user-circle"></i>
+        <span>管理员</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script>
+import session from '../../common/js/session';
+
 const HOME = '/home';
 const USER = '/user';
 const USER_ALL = '/user/all';
@@ -62,6 +68,7 @@ const COMPLAINT_ALL = '/complaint/all';
 const COMPLAINT_PENDING = '/complaint/pending';
 const FEEDBACK = '/feedback/list';
 const NOTICE = '/notice/list';
+const ADMINS = '/admins';
 
 export default {
   computed: {
@@ -71,6 +78,7 @@ export default {
   },
   data() {
     return {
+      userName: session.getString('operator'),
       HOME,
       USER,
       USER_ALL,
@@ -83,7 +91,8 @@ export default {
       COMPLAINT_ALL,
       COMPLAINT_PENDING,
       FEEDBACK,
-      NOTICE
+      NOTICE,
+      ADMINS
     };
   }
 };

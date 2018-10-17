@@ -27,7 +27,7 @@
 <script>
 import session from '../../common/js/session';
 
-const operator = session.getObject('operator');
+const operator = session.getString('operator');
 if (!operator) {
   window.location.href = './login.html';
 }
