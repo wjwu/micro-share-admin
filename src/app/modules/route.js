@@ -9,6 +9,7 @@ import complaint from './complaint/route';
 import feedback from './feedback/route';
 import notice from './notice/route';
 import admin from './admin/route';
+import sales from './sales/route';
 
 Vue.use(VueRouter);
 
@@ -29,7 +30,8 @@ const router = new VueRouter({
     complaint,
     feedback,
     notice,
-    admin
+    admin,
+    sales
   ]
 });
 

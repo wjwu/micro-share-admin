@@ -48,6 +48,10 @@
         <i class="fa fa-user-circle"></i>
         <span>管理员</span>
       </el-menu-item>
+      <el-menu-item :index="SALES">
+        <i class="fa fa-money"></i>
+        <span>销售额</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -69,6 +73,7 @@ const COMPLAINT_PENDING = '/complaint/pending';
 const FEEDBACK = '/feedback/list';
 const NOTICE = '/notice/list';
 const ADMINS = '/admins';
+const SALES = '/sales';
 
 export default {
   computed: {
@@ -92,7 +97,8 @@ export default {
       COMPLAINT_PENDING,
       FEEDBACK,
       NOTICE,
-      ADMINS
+      ADMINS,
+      SALES
     };
   }
 };
