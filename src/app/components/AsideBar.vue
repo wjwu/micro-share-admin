@@ -26,7 +26,7 @@
           <span>用户</span>
         </template>
         <el-menu-item :index="USER_ALL">全部用户</el-menu-item>
-        <el-menu-item :index="USER_VIP">管家管理</el-menu-item>
+        <el-menu-item :index="USER_VIP"  v-if="userName === 'admin'">管家管理</el-menu-item>
       </el-submenu>
       <el-submenu :index="GROUP">
         <template slot="title">

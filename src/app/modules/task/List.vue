@@ -14,7 +14,7 @@
       </el-table-column>
       <el-table-column label="图片">
         <template slot-scope="scope">
-          <img class="task-image" :src="`${image}?imageView2/1/w/100/h/100/interlace/1/q/75`" v-for="(image,i) in scope.row.images" :key="i" />
+          <img class="task-image" :src="`${image}?imageView2/1/w/100/h/100/interlace/1/q/75`" v-if="image" v-for="(image,i) in scope.row.images" :key="i" />
         </template>
       </el-table-column>
       <el-table-column label="创建时间" width="160">
