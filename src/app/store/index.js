@@ -8,7 +8,9 @@ import complaint from './modules/complaint';
 import feedback from './modules/feedback';
 import notice from './modules/notice';
 import admin from './modules/admin';
-import sales from './modules/sales';
+import sale from './modules/sale';
+import task from './modules/task';
+import item from './modules/item';
 
 Vue.use(Vuex);
 
@@ -22,6 +24,8 @@ export default new Vuex.Store({
     feedback,
     notice,
     admin,
-    sales
+    sale,
+    task,
+    item
   }
 });

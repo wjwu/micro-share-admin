@@ -20,7 +20,7 @@ const format = value => {
   return currency(value, { symbol: '¥', precision: 0 }).format(true);
 };
 export default {
-  computed: mapState('sales', {
+  computed: mapState('sale', {
     sales: state => {
       let data = state.getSales.data;
       let wrapper = [];
@@ -50,7 +50,7 @@ export default {
     this.getSales();
   },
   methods: {
-    ...mapActions('sales', ['getSales'])
+    ...mapActions('sale', ['getSales'])
   }
 };
 </script>

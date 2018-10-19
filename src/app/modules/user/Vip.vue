@@ -7,6 +7,9 @@
       <el-form-item label="微信号：">
         <el-input size="medium" v-model="searchForm.wechatId"></el-input>
       </el-form-item>
+      <el-form-item label="用户ID：">
+        <el-input size="medium" v-model="searchForm.userId"></el-input>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" size="medium" @click="handleSearch">搜索</el-button>
       </el-form-item>
@@ -78,7 +81,8 @@ export default {
       currentPage: 1,
       searchForm: {
         userName: '',
-        wechatId: ''
+        wechatId: '',
+        userId: ''
       },
       vipDialogVisible: false,
       selectedUserId: '',
@@ -105,7 +109,7 @@ export default {
       this.load();
     },
     handleSearch() {
-      if (!this.searchForm.userName && !this.searchForm.wechatId) {
+      if (!this.searchForm.userName && !this.searchForm.wechatId && !this.searchForm.userId) {
         this.notifyError('请输入至少一项查询条件');
       } else {
         this.currentPage = 1;

@@ -36,6 +36,14 @@
         <el-menu-item :index="GROUP_ALL">全部群组</el-menu-item>
         <el-menu-item :index="GROUP_AUDIT">待审核群组</el-menu-item>
       </el-submenu>
+      <el-menu-item :index="ITEMS">
+        <i class="fa fa-product-hunt"></i>
+        <span>商品</span>
+      </el-menu-item>
+      <el-menu-item :index="TASKS">
+        <i class="fa fa-tasks"></i>
+        <span>任务</span>
+      </el-menu-item>
       <el-menu-item :index="FEEDBACK">
         <i class="fa fa-feed"></i>
         <span>反馈</span>
@@ -74,6 +82,8 @@ const FEEDBACK = '/feedback/list';
 const NOTICE = '/notice/list';
 const ADMINS = '/admins';
 const SALES = '/sales';
+const ITEMS = '/items';
+const TASKS = '/tasks';
 
 export default {
   computed: {
@@ -98,7 +108,9 @@ export default {
       FEEDBACK,
       NOTICE,
       ADMINS,
-      SALES
+      SALES,
+      ITEMS,
+      TASKS
     };
   }
 };

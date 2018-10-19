@@ -10,6 +10,9 @@
       <el-form-item label="微信号：">
         <el-input size="medium" v-model="searchForm.wechatId"></el-input>
       </el-form-item>
+      <el-form-item label="用户ID：">
+        <el-input size="medium" v-model="searchForm.userId"></el-input>
+      </el-form-item>
       <el-form-item label="信用分：">
         <el-select size="medium" v-model="searchForm.scoreStart" style="width:80px;">
           <el-option label="全部" value=""></el-option>
@@ -99,6 +102,7 @@ export default {
         userName: '',
         wechatId: '',
         phone: '',
+        userId: '',
         scoreStart: '',
         scoreEnd: ''
       },

@@ -5,6 +5,7 @@ import './order';
 import './complaint';
 import './feedback';
 import './group';
+import './task';
 
 Vue.filter('sex', val => {
   if (val === 'MAN') {

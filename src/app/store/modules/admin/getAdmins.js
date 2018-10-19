@@ -11,15 +11,15 @@ export default {
     }
   },
   mutations: {
-    requestGetGroups(state, params) {
+    requestGetAdmins(state, params) {
       state.getAdmins.params = params;
       state.getAdmins.loading = true;
     },
-    successGetGroups(state, data) {
+    successGetAdmins(state, data) {
       state.getAdmins.data = data;
       state.getAdmins.loading = false;
     },
-    failureGetGroups(state) {
+    failureGetAdmins(state) {
       state.getAdmins.loading = false;
     }
   },
@@ -28,16 +28,16 @@ export default {
       return helper.actionWrapper(
         commit,
         async () => {
-          commit('requestGetGroups', params);
+          commit('requestGetAdmins', params);
           const { data } = await axios.get('/admin/', {
             params: {
               ...params
             }
           });
-          commit('successGetGroups', data);
+          commit('successGetAdmins', data);
         },
         () => {
-          commit('failureGetGroups');
+          commit('failureGetAdmins');
         }
       );
     }
