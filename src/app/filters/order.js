@@ -13,10 +13,6 @@ Vue.filter('orderStatus', val => {
     return '完成';
   } else if (val === 'COMMENT') {
     return '已评价';
-  } else if (val === 'REPORTED') {
-    return '被投诉';
-  } else if (val === 'REPORTED_DISAVOW') {
-    return '被投诉—不承认';
   } else {
     return '';
   }

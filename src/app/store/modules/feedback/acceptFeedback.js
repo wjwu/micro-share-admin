@@ -25,7 +25,7 @@ export default {
         async () => {
           commit('requestAcceptFeedback');
           await axios.put(`/admin/feedback/${params.id}/agree`, {
-            score: params.score
+            ...params
           });
           commit('successAcceptFeedback');
           dispatch('global/notifySuccess', '操作成功', { root: true });

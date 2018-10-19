@@ -14,8 +14,8 @@ export default {
       state.getOrders.loading = true;
     },
     successGetOrders(state, data) {
-      state.getOrders.data = data;
-      state.getOrders.total = data.totalCount;
+      state.getOrders.data = data.content;
+      state.getOrders.total = data.totalElements;
       state.getOrders.loading = false;
     },
     failureGetOrders(state) {

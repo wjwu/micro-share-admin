@@ -30,29 +30,28 @@
       </el-table-column>
       <el-table-column label="操作" width="100">
         <template slot-scope="scope">
-          <el-button v-if="scope.row.status === 'SUBMIT'" type="text" size="medium" @click="handleAccept(scope.row)">采纳</el-button>
+          <el-button v-if="scope.row.status === 'SUBMIT'" type="text" size="medium" @click="handleAccept(scope.row.id)">采纳</el-button>
           <el-button v-if="scope.row.status === 'SUBMIT'" type="text" size="medium" @click="handleRefuse(scope.row.id)">拒绝</el-button>
         </template>
       </el-table-column>
     </el-table>
     <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="currentPage" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
     </el-pagination>
-    <accept-dialog :visible.sync="acceptDialogVisible" :feedback="feedback"></accept-dialog>
+    <feedback-dialog :visible.sync="acceptDialogVisible" :feedback-id="selectedFeedbackId" :accept="accept"></feedback-dialog>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import AcceptDialog from './components/AcceptDialog';
+import FeedbackDialog from './components/FeedbackDialog';
 
 export default {
   components: {
-    AcceptDialog
+    FeedbackDialog
   },
   computed: mapState('feedback', {
     feedbacks: state => state.getFeedbacks.data,
-    loading: state =>
-      state.getFeedbacks.loading || state.refuseFeedback.loading,
+    loading: state => state.getFeedbacks.loading,
     total: state => state.getFeedbacks.total
   }),
   data() {
@@ -63,7 +62,8 @@ export default {
         // name: '',
         // wechatId: ''
       },
-      feedback: null,
+      selectedFeedbackId: '',
+      accept: true,
       acceptDialogVisible: false
     };
   },
@@ -71,7 +71,7 @@ export default {
     this.load();
   },
   methods: {
-    ...mapActions('feedback', ['getFeedbacks', 'refuseFeedback']),
+    ...mapActions('feedback', ['getFeedbacks']),
     load() {
       let request = {
         pageSize: this.pageSize,
@@ -92,13 +92,15 @@ export default {
       this.currentPage = 1;
       this.load();
     },
-    handleAccept(row) {
-      this.feedback = { ...row };
+    handleAccept(id) {
+      this.selectedFeedbackId = id.toString();
+      this.accept = true;
       this.acceptDialogVisible = true;
     },
     async handleRefuse(id) {
-      await this.$confirm('您确定要拒绝该条建议？');
-      this.refuseFeedback(id);
+      this.selectedFeedbackId = id.toString();
+      this.accept = false;
+      this.acceptDialogVisible = true;
     }
   }
 };

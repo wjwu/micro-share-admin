@@ -2,16 +2,24 @@
   <div>
     <el-form inline label-width="80px" :model="searchForm">
       <el-form-item label="时间：">
-        <el-select size="medium" v-model="searchForm.timeFlag">
-          <el-option label="全部" value="all"></el-option>
-          <el-option label="一天内" value="day"></el-option>
-          <el-option label="一周内" value="week"></el-option>
-          <el-option label="一月内" value="mon"></el-option>
+        <el-select size="medium" v-model="searchForm.days">
+          <el-option label="全部" value=""></el-option>
+          <el-option label="一天内" value="1"></el-option>
+          <el-option label="一周内" value="7"></el-option>
+          <el-option label="一月内" value="30"></el-option>
         </el-select>
       </el-form-item>
-      <!-- <el-form-item label="微信号：">
-        <el-input size="medium" v-model="searchForm.wechatId"></el-input>
-      </el-form-item> -->
+      <el-form-item label="状态：">
+        <el-select size="medium" v-model="searchForm.status">
+          <el-option label="全部" value=""></el-option>
+          <el-option label="匹配中" value="MATCH_ONGOING"></el-option>
+          <el-option label="匹配成功" value="MATCH_SUCCESS"></el-option>
+          <el-option label="匹配失败" value="MATCH_FAILED"></el-option>
+          <el-option label="已支付" value="PAID"></el-option>
+          <el-option label="完成" value="DONE"></el-option>
+          <el-option label="已评价" value="COMMENT"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" size="medium" @click="handleSearch">搜索</el-button>
       </el-form-item>
@@ -69,7 +77,8 @@ export default {
       pageSize: 10,
       currentPage: 1,
       searchForm: {
-        timeFlag: 'all'
+        days: '',
+        status: ''
       },
       orderDialogVisible: false
     };

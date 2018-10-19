@@ -19,15 +19,17 @@ export default {
     }
   },
   actions: {
-    refuseFeedback({ commit, dispatch, state }, id) {
+    refuseFeedback({ commit, dispatch, state }, params) {
       return helper.actionWrapper(
         commit,
         async () => {
           commit('requestRefuseFeedback');
-          await axios.put(`/admin/feedback/${id}/refuse`);
+          await axios.put(`/admin/feedback/${params.id}/refuse`, {
+            ...params
+          });
           commit('successRefuseFeedback');
           dispatch('global/notifySuccess', '操作成功', { root: true });
-          dispatch('getNotices', state.getFeedbacks.params);
+          dispatch('getFeedbacks', state.getFeedbacks.params);
         },
         () => {
           commit('failureRefuseFeedback');

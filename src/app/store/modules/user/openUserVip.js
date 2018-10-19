@@ -26,8 +26,7 @@ export default {
           commit('requestOpenUserVip');
           await axios.put(`/admin/user/${params.id}/vip/open`, null, {
             params: {
-              type: params.type,
-              month: params.month
+              ...params
             }
           });
           commit('successOpenUserVip');
