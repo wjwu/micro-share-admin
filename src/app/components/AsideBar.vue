@@ -10,7 +10,7 @@
       </el-menu-item>
       <el-menu-item :index="ORDER">
         <i class="fa fa-file-text"></i>
-        <span>订单</span>
+        <span>订单列表</span>
       </el-menu-item>
       <el-submenu :index="COMPLAINT">
         <template slot="title">
@@ -26,7 +26,7 @@
           <span>用户</span>
         </template>
         <el-menu-item :index="USER_ALL">全部用户</el-menu-item>
-        <el-menu-item :index="USER_VIP">管家管理</el-menu-item>
+        <el-menu-item :index="USER_VIP" v-if="userName === 'admin'">管家管理</el-menu-item>
       </el-submenu>
       <el-submenu :index="GROUP">
         <template slot="title">
@@ -38,17 +38,17 @@
       </el-submenu>
       <el-menu-item :index="ITEMS">
         <i class="fa fa-product-hunt"></i>
-        <span>商品</span>
+        <span>商品列表</span>
       </el-menu-item>
       <el-menu-item :index="TASKS">
         <i class="fa fa-tasks"></i>
-        <span>任务</span>
+        <span>任务列表</span>
       </el-menu-item>
       <el-menu-item :index="FEEDBACK">
         <i class="fa fa-feed"></i>
         <span>反馈</span>
       </el-menu-item>
-      <el-menu-item :index="NOTICE">
+      <el-menu-item :index="NOTICE" v-if="userName === 'admin'">
         <i class="fa fa-bullhorn"></i>
         <span>公告</span>
       </el-menu-item>
@@ -56,7 +56,7 @@
         <i class="fa fa-user-circle"></i>
         <span>管理员</span>
       </el-menu-item>
-      <el-menu-item :index="SALES">
+      <el-menu-item :index="SALES" v-if="userName === 'admin'">
         <i class="fa fa-money"></i>
         <span>销售额</span>
       </el-menu-item>
