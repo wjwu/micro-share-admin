@@ -47,8 +47,8 @@
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button type="success" size="medium" @click="handleSuccess" :loading="loading">处理成功</el-button>
-      <el-button type="danger" size="medium" @click="handleRefuse" :loading="loading">处理拒绝</el-button>
+      <el-button type="success" size="medium" @click="handleSuccess" :loading="loading">投诉有效</el-button>
+      <el-button type="danger" size="medium" @click="handleRefuse" :loading="loading">无效投诉</el-button>
       <el-button size="medium" @click="handleClose">关闭</el-button>
     </span>
   </el-dialog>
