@@ -1,16 +1,16 @@
 <template>
   <div>
-    <!-- <el-form inline label-width="80px" :model="searchForm">
-      <el-form-item label="名称">
-        <el-input size="medium" v-model="searchForm.name"></el-input>
+    <el-form inline label-width="100px" :model="searchForm">
+      <el-form-item label="投诉人：">
+        <el-input size="medium" v-model="searchForm.fromUserName"></el-input>
       </el-form-item>
-      <el-form-item label="微信号：">
-        <el-input size="medium" v-model="searchForm.wechatId"></el-input>
+      <el-form-item label="被投诉人：">
+        <el-input size="medium" v-model="searchForm.toUserName"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" size="medium" @click="handleSearch">搜索</el-button>
       </el-form-item>
-    </el-form> -->
+    </el-form>
     <el-table :data="complaints" border style="width:100%" header-row-class-name="table-header" v-loading="loading">
       <el-table-column label="投诉人" width="120" prop="fromName">
       </el-table-column>
@@ -69,8 +69,8 @@ export default {
       pageSize: 10,
       currentPage: 1,
       searchForm: {
-        name: '',
-        wechatId: ''
+        fromUserName: '',
+        toUserName: ''
       },
       complaintDialogVisible: false
     };
@@ -107,10 +107,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.head-phone {
-  height: 60px;
-  width: 60px;
-}
-</style>
 
