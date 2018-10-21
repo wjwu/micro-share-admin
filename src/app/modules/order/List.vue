@@ -14,7 +14,6 @@
           <el-option label="全部" value=""></el-option>
           <el-option label="匹配中" value="MATCH_ONGOING"></el-option>
           <el-option label="匹配成功" value="MATCH_SUCCESS"></el-option>
-          <el-option label="匹配失败" value="MATCH_FAILED"></el-option>
           <el-option label="已支付" value="PAID"></el-option>
           <el-option label="完成" value="DONE"></el-option>
           <el-option label="已评价" value="COMMENT"></el-option>
