@@ -69,7 +69,7 @@
         </el-row>
       </el-tab-pane>
       <el-tab-pane label="统计信息">
-        <el-card class="box-card">
+        <el-card class="box-card" v-if="group.totalInfo">
           <div slot="header" class="clearfix">
             <span>该群5天收集信息如下：</span>
           </div>
@@ -80,7 +80,7 @@
             2.&nbsp;&nbsp;有<span class="red">{{group.totalInfo.senderNumbers | number}}</span>人发言了
           </div>
         </el-card>
-        <el-card class="box-card">
+        <el-card class="box-card" v-if="group.totalInfo">
           <div slot="header" class="clearfix">
             <span>该群涉嫌违规如下：</span>
           </div>
@@ -103,7 +103,7 @@
             6.&nbsp;&nbsp;涉诱导关键词触发<span class="red">{{group.totalInfo.youdaoTimes | number}}</span>次
           </div>
         </el-card>
-        <el-card class="box-card">
+        <el-card class="box-card" v-if="group.totalInfo">
           <div class="text item">
             群活跃度：<span class="red">{{group.totalInfo.activity}}</span>
           </div>
