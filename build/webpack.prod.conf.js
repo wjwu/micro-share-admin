@@ -59,15 +59,15 @@ var config = merge(baseConfig, {
       externals: [
         {
           module: 'vue',
-          entry: 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.runtime.min.js'
+          entry: 'http://static.fangzhoubuluo.com/js/vue.runtime.min.js'
         },
         {
           module: 'element-ui',
-          entry: 'https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.4.7/index.js'
+          entry: 'http://static.fangzhoubuluo.com/js/element-ui-index.js'
         },
         {
           module: 'axios',
-          entry: 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js'
+          entry: 'http://static.fangzhoubuluo.com/js/axios.min.js'
         }
       ],
       files: ['login.html']
@@ -76,27 +76,27 @@ var config = merge(baseConfig, {
       externals: [
         {
           module: 'vue',
-          entry: 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.runtime.min.js'
+          entry: 'http://static.fangzhoubuluo.com/js/vue.runtime.min.js'
         },
         {
           module: 'element-ui',
-          entry: 'https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.4.7/index.js'
+          entry: 'http://static.fangzhoubuluo.com/js/element-ui-index.js'
         },
         {
           module: 'vue-router',
-          entry: 'https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.min.js'
+          entry: 'http://static.fangzhoubuluo.com/js/vue-router.min.js'
         },
         {
           module: 'vuex',
-          entry: 'https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.min.js'
+          entry: 'http://static.fangzhoubuluo.com/js/vuex.min.js'
         },
         {
           module: 'axios',
-          entry: 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js'
+          entry: 'http://static.fangzhoubuluo.com/js/axios.min.js'
         },
         {
           module: 'lodash',
-          entry: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js'
+          entry: 'http://static.fangzhoubuluo.com/js/lodash.min.js'
         },
         // {
         //   module: 'ckeditor',
