@@ -89,6 +89,9 @@ export default {
       selectedType: ''
     };
   },
+  mounted() {
+    this.load();
+  },
   methods: {
     ...mapActions('user', ['getUsers', 'closeUserVip']),
     ...mapActions('global', ['notifyError']),
