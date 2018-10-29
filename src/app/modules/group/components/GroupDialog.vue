@@ -39,6 +39,11 @@
                 {{group.group.desc}}
               </el-form-item>
             </el-col>
+            <el-col :span="12">
+              <el-form-item label="提交来源：">
+                <span style='color:red;font-weight:900;'>{{group.room && group.room.from| roomFromType}}</span>
+              </el-form-item>
+            </el-col>
             <el-col :span="12" v-if="!doAudit">
               <el-form-item label="审核状态：">
                 {{group.group.status | groupAuditStatus}}

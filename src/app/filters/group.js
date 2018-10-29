@@ -21,3 +21,14 @@ Vue.filter('groupFailType', val => {
     return '';
   }
 });
+
+
+Vue.filter('roomFromType', val => {
+  if (val === 'NORMAL') {
+    return '普通群';
+  } else if (val === 'ADV') {
+    return '助手群';
+  } else {
+    return '普通群';
+  }
+});
