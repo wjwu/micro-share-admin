@@ -12,6 +12,7 @@ import sale from './modules/sale';
 import task from './modules/task';
 import item from './modules/item';
 import circle from './modules/circle';
+import shop from './modules/shop';
 
 Vue.use(Vuex);
 
@@ -28,6 +29,7 @@ export default new Vuex.Store({
     sale,
     task,
     item,
-    circle
+    circle,
+    shop
   }
 });

@@ -13,6 +13,7 @@ import sale from './sale/route';
 import item from './item/route';
 import task from './task/route';
 import circle from './circle/route';
+import shop from './shop/route';
 
 Vue.use(VueRouter);
 
@@ -37,7 +38,8 @@ const router = new VueRouter({
     sale,
     item,
     task,
-    circle
+    circle,
+    shop
   ]
 });
 

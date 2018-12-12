@@ -49,6 +49,7 @@
           <span>店铺</span>
         </template>
         <el-menu-item :index="SHOP_ALL">全部店铺</el-menu-item>
+        <el-menu-item :index="SHOP_ORDER">店铺订单</el-menu-item>
       </el-submenu>
       <el-menu-item :index="ITEMS">
         <i class="fa fa-product-hunt"></i>
@@ -99,6 +100,7 @@ const ITEMS = '/items';
 const TASKS = '/tasks';
 const CIRCLE_ALL = '/circle/all';
 const SHOP_ALL = '/shop/all';
+const SHOP_ORDER = '/shop/order';
 
 export default {
   computed: {
@@ -126,7 +128,8 @@ export default {
       ITEMS,
       TASKS,
       CIRCLE_ALL,
-      SHOP_ALL
+      SHOP_ALL,
+      SHOP_ORDER
     };
   }
 };

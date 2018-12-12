@@ -76,6 +76,14 @@ export default {
           type: result ? 'success' : 'failed'
         });
       });
+    },
+    handleCurrentChange(currentPage) {
+      this.currentPage = currentPage;
+      this.load();
+    },
+    handleSizeChange(pageSize) {
+      this.pageSize = pageSize;
+      this.load();
     }
   },
   filters: {
