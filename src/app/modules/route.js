@@ -12,6 +12,7 @@ import admin from './admin/route';
 import sale from './sale/route';
 import item from './item/route';
 import task from './task/route';
+import circle from './circle/route';
 
 Vue.use(VueRouter);
 
@@ -35,7 +36,8 @@ const router = new VueRouter({
     admin,
     sale,
     item,
-    task
+    task,
+    circle
   ]
 });
 

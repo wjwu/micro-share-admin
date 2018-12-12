@@ -11,6 +11,7 @@ import admin from './modules/admin';
 import sale from './modules/sale';
 import task from './modules/task';
 import item from './modules/item';
+import circle from './modules/circle';
 
 Vue.use(Vuex);
 
@@ -26,6 +27,7 @@ export default new Vuex.Store({
     admin,
     sale,
     task,
-    item
+    item,
+    circle
   }
 });

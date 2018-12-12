@@ -26,15 +26,29 @@
           <span>用户</span>
         </template>
         <el-menu-item :index="USER_ALL">全部用户</el-menu-item>
-        <el-menu-item :index="USER_VIP"  v-if="userName === 'admin'">管家管理</el-menu-item>
+        <el-menu-item :index="USER_VIP" v-if="userName === 'admin'">管家管理</el-menu-item>
       </el-submenu>
-      <el-submenu :index="GROUP">
+      <el-submenu index='GROUP'>
         <template slot="title">
           <i class="fa fa-users"></i>
           <span>群组</span>
         </template>
         <el-menu-item :index="GROUP_ALL">全部群组</el-menu-item>
         <el-menu-item :index="GROUP_AUDIT">待审核群组</el-menu-item>
+      </el-submenu>
+      <el-submenu index='CIRCLE'>
+        <template slot="title">
+          <i class="fa fa-circle-o"></i>
+          <span>圈子</span>
+        </template>
+        <el-menu-item :index="CIRCLE_ALL">全部圈子</el-menu-item>
+      </el-submenu>
+      <el-submenu index='SHOP'>
+        <template slot="title">
+          <i class="fa fa-university"></i>
+          <span>店铺</span>
+        </template>
+        <el-menu-item :index="SHOP_ALL">全部店铺</el-menu-item>
       </el-submenu>
       <el-menu-item :index="ITEMS">
         <i class="fa fa-product-hunt"></i>
@@ -71,7 +85,6 @@ const HOME = '/home';
 const USER = '/user';
 const USER_ALL = '/user/all';
 const USER_VIP = '/user/vip';
-const GROUP = '/group/list';
 const GROUP_ALL = '/group/all';
 const GROUP_AUDIT = '/group/audit';
 const ORDER = '/order/list';
@@ -84,6 +97,8 @@ const ADMINS = '/admins';
 const SALES = '/sales';
 const ITEMS = '/items';
 const TASKS = '/tasks';
+const CIRCLE_ALL = '/circle/all';
+const SHOP_ALL = '/shop/all';
 
 export default {
   computed: {
@@ -98,7 +113,6 @@ export default {
       USER,
       USER_ALL,
       USER_VIP,
-      GROUP,
       GROUP_ALL,
       GROUP_AUDIT,
       ORDER,
@@ -110,7 +124,9 @@ export default {
       ADMINS,
       SALES,
       ITEMS,
-      TASKS
+      TASKS,
+      CIRCLE_ALL,
+      SHOP_ALL
     };
   }
 };

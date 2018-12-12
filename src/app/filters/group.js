@@ -22,7 +22,6 @@ Vue.filter('groupFailType', val => {
   }
 });
 
-
 Vue.filter('roomFromType', val => {
   if (val === 'NORMAL') {
     return '普通群';
