@@ -30,7 +30,7 @@ export default {
         commit,
         async () => {
           commit('requestGetOrders', params);
-          let { data } = await axios.get(' /admin/shop/order', {
+          let { data } = await axios.get('/admin/shop/order', {
             params: {
               ...params
             }

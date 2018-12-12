@@ -38,7 +38,7 @@
       </el-submenu>
       <el-submenu index='CIRCLE'>
         <template slot="title">
-          <i class="fa fa-circle-o"></i>
+          <i class="fa fa-dot-circle-o"></i>
           <span>圈子</span>
         </template>
         <el-menu-item :index="CIRCLE_ALL">全部圈子</el-menu-item>

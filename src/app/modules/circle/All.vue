@@ -18,7 +18,7 @@
       <el-table-column label="描述" prop="description" show-overflow-tooltip>
       </el-table-column>
       <el-table-column label="操作" width="140" fixed="right">
-        <template slot-scope="scope">
+        <template slot-scope="scope" v-if="scope.row.status === 'COMMIT'">
           <el-button type="text" size="medium" @click="handleAudit(scope.row.id,true)">通过</el-button>
           <el-button type="text" size="medium" @click="handleAudit(scope.row.id,false)">拒绝</el-button>
         </template>

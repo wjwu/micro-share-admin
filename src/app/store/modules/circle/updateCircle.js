@@ -24,7 +24,7 @@ export default {
         commit,
         async () => {
           commit('requestUpdateCircle');
-          await axios.post(`/admin/circle/${params.id}/${params.type}`);
+          await axios.put(`/admin/circle/${params.id}/${params.type}`);
           commit('successUpdateCircle');
           dispatch('global/notifySuccess', '操作成功', { root: true });
           dispatch('getCircles', state.getCircles.params);
