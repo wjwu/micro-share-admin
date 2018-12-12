@@ -25,13 +25,18 @@
     </el-table>
     <el-pagination v-if="total" @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="pageSize" :current-page="currentPage" :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total" class="table-page">
     </el-pagination>
+    <order-dialog :visible.sync="orderDialogVisible" :order="order"></order-dialog>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import OrderDialog from './components/OrderDialog';
 
 export default {
+  components: {
+    OrderDialog
+  },
   computed: {
     ...mapState('shop', {
       orders: state => state.getOrders.data,
@@ -43,7 +48,9 @@ export default {
     return {
       pageSize: 10,
       currentPage: 1,
-      searchForm: {}
+      searchForm: {},
+      order: null,
+      orderDialogVisible: false
     };
   },
   mounted() {
@@ -66,7 +73,10 @@ export default {
       this.pageSize = pageSize;
       this.load();
     },
-    handleView() {}
+    handleView(order) {
+      this.order = order;
+      this.orderDialogVisible = true;
+    }
   }
 };
 </script>
